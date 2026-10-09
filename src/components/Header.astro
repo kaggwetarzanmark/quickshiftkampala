@@ -3,7 +3,8 @@
    Logo: bold 22px  |  Nav links: gap:28px font-weight:500
    CTA: bg:#FF7A1A color:#0F1B2D fw:800 padding:12px 24px border-radius:8px */
 
-const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent('Hi! I need a quote for office relocation.');
+const waQuoteUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a quote for office relocation.');
+const waUrl = waQuoteUrl;
 
 const services = [
   { label:'Office Relocation',      href:'/services/office-relocation',      desc:'Full overnight moves' },
@@ -51,7 +52,7 @@ const areas = [
           </div>
           <div class="drop-footer">
             <a href="/services" class="drop-all">All services →</a>
-            <a href="/get-a-quote" class="btn btn--primary btn--sm">Get a quote</a>
+            <a href={waQuoteUrl} class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Get a quote</a>
           </div>
         </div>
       </div>
@@ -78,7 +79,7 @@ const areas = [
       <a href={waUrl} class="nav-wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
       </a>
-      <a href="/get-a-quote" class="btn btn--primary">Get a quote</a>
+      <a href={waQuoteUrl} class="btn btn--primary" target="_blank" rel="noopener noreferrer">Get a quote</a>
     </div>
 
     <!-- Burger -->
@@ -90,9 +91,9 @@ const areas = [
 
 <!-- Mobile sticky CTA bar -->
 <div class="mob-bar" id="mob-bar">
-  <a href="tel:+256700000000" class="mob-bar__btn mob-bar__btn--call">Call us</a>
+  <a href="tel:+256782792648" class="mob-bar__btn mob-bar__btn--call">Call us</a>
   <a href={waUrl} class="mob-bar__btn mob-bar__btn--wa" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-  <a href="/get-a-quote" class="mob-bar__btn mob-bar__btn--quote">Get a quote</a>
+  <a href={waQuoteUrl} class="mob-bar__btn mob-bar__btn--quote" target="_blank" rel="noopener noreferrer">Get a quote</a>
 </div>
 
 <script>

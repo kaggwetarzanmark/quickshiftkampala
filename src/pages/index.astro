@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
-const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent("Hi! I need a moving quote in Kampala. Can you help?");
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent("Hi! I need a moving quote in Kampala. Can you help?");
 
 const steps = [
   { n:'STEP 01', title:'Request a quote',  desc:'Call, WhatsApp or fill in the form - we respond within one hour.' },
@@ -52,12 +52,12 @@ const faqs = [
 
   <!-- HERO -->
   <section class="hero w">
-    <div class="hero__copy">
+    <div class="hero__left">
       <span class="eyebrow">Movers in Kampala, Uganda</span>
       <h1 class="hero__h1">Moving made simple<span class="hero__dot">.</span></h1>
       <p class="hero__sub">Home shifting, office relocation or commercial move - one crew, one fixed price, zero surprises. Trusted by families and businesses across Kampala.</p>
       <div class="hero__btns">
-        <a href="/get-a-quote" class="btn btn--primary btn--lg">Get a free quote</a>
+        <a href={waUrl} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Get a free quote</a>
         <a href={waUrl} class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
       </div>
       <div class="hero__trust">
@@ -70,41 +70,12 @@ const faqs = [
       </div>
     </div>
 
-    <!-- Quote card -->
-    <div class="hero__card" id="quote">
-      <b class="hero__card-title">Free quote</b>
-      <form name="hero-quote" method="POST" action="/thank-you" class="hero__form" novalidate>
-        <div style="display:none" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
-
-        <label class="form-label form-label--dark" for="h-type">What are you moving?</label>
-        <select id="h-type" name="move_type" class="form-select" required>
-          <option value="" disabled selected>Select move type</option>
-          <option value="home">Home / house shifting</option>
-          <option value="office">Office relocation</option>
-          <option value="furniture">Furniture only</option>
-          <option value="corporate">Corporate / multi-branch</option>
-        </select>
-
-        <label class="form-label form-label--dark" for="h-from">Moving from</label>
-        <select id="h-from" name="from_district" class="form-select" required>
-          <option value="" disabled selected>Select district</option>
-          <option>Nakasero</option><option>Kololo</option><option>Ntinda</option>
-          <option>Bugolobi</option><option>Naguru</option><option>Muyenga</option>
-          <option>Bukoto</option><option>Industrial Area</option><option>Other</option>
-        </select>
-
-        <label class="form-label form-label--dark" for="h-to">Moving to</label>
-        <select id="h-to" name="to_district" class="form-select" required>
-          <option value="" disabled selected>Select district</option>
-          <option>Nakasero</option><option>Kololo</option><option>Ntinda</option>
-          <option>Bugolobi</option><option>Naguru</option><option>Muyenga</option>
-          <option>Bukoto</option><option>Industrial Area</option><option>Other</option>
-        </select>
-
-        <button type="submit" class="btn btn--primary" style="width:100%;height:52px;font-size:17px;border-radius:10px;margin-top:4px">
-          Request quote
-        </button>
-      </form>
+    <div class="hero__right">
+      <div class="hero__arch-bg"></div>
+      <div class="hero__arch-photo">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&auto=format&fit=crop" alt="Quick Shift Kampala professional movers loading a truck for a home or office move" class="img-cover" loading="eager" width="560" height="480" />
+      </div>
+      <div class="hero__badge">Free survey &middot; Fixed price</div>
     </div>
   </section>
 
@@ -250,7 +221,7 @@ const faqs = [
           <span class="est-result__label">Estimated range</span>
           <span class="est-result__val" id="est-val">UGX 1,200,000 - 2,000,000</span>
         </div>
-        <a href="/get-a-quote" class="btn btn--primary" style="width:100%;justify-content:center">Get your exact fixed quote -&gt;</a>
+        <a href={waUrl} class="btn btn--primary" style="width:100%;justify-content:center" target="_blank" rel="noopener noreferrer">Get your exact fixed quote -&gt;</a>
       </div>
     </div>
   </section>
@@ -294,7 +265,7 @@ const faqs = [
           <span class="pricing-row__detail">Apartment or house - packing, transport, setup</span>
         </div>
         <span class="pricing-row__price">From UGX 600,000</span>
-        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+        <a href={waUrl} class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Get quote</a>
       </div>
       <div class="pricing-row pricing-row--hi">
         <div>
@@ -302,7 +273,7 @@ const faqs = [
           <span class="pricing-row__detail">1-10 staff - packing, overnight transport, full setup</span>
         </div>
         <span class="pricing-row__price">From UGX 1,500,000</span>
-        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+        <a href={waUrl} class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Get quote</a>
       </div>
       <div class="pricing-row">
         <div>
@@ -310,7 +281,7 @@ const faqs = [
           <span class="pricing-row__detail">11-50 staff - plus IT handling and project manager</span>
         </div>
         <span class="pricing-row__price">From UGX 4,500,000</span>
-        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+        <a href={waUrl} class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Get quote</a>
       </div>
     </div>
     <p style="font-size:13px;color:#9fb0c8;margin-top:16px">
@@ -379,15 +350,15 @@ const faqs = [
   /* HERO */
   .hero {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 56px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 48px;
     align-items: center;
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 8px;
+    padding-bottom: 56px;
   }
   .hero__h1 {
-    font-size: clamp(38px, 5vw, 62px);
-    line-height: 1.08;
+    font-size: clamp(40px, 5.2vw, 68px);
+    line-height: 1.04;
     margin: 8px 0 20px;
     color: #fff;
   }
@@ -396,24 +367,53 @@ const faqs = [
     color: #9fb0c8;
     font-size: 19px;
     line-height: 1.6;
-    margin-bottom: 32px;
+    max-width: 460px;
+    margin-bottom: 28px;
   }
-  .hero__btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+  .hero__btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
   .hero__trust { display: flex; flex-wrap: wrap; gap: 16px; }
   .hero__trust-item {
     display: flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 500; color: #9fb0c8;
   }
 
-  /* Quote card */
-  .hero__card {
-    background: #fff; color: #0B1626;
-    border-radius: 20px; padding: 32px;
+  /* Hero arch photo */
+  .hero__right { position: relative; height: 480px; }
+  .hero__arch-bg {
+    position: absolute; right: 0; top: 36px;
+    width: 70%; height: 100%;
+    background: #FF7A1A;
+    border-radius: 240px 240px 24px 24px;
   }
-  .hero__card-title { font-size: 22px; font-weight: 800; display: block; margin-bottom: 16px; }
-  .hero__form { display: flex; flex-direction: column; gap: 0; }
-  .hero__form .form-label--dark { color: #0B1626; margin-top: 14px; }
-  .hero__form .form-label--dark:first-of-type { margin-top: 0; }
+  .hero__arch-photo {
+    position: absolute; right: 36px; top: 0;
+    width: 70%; height: 100%;
+    border-radius: 240px 240px 24px 24px;
+    overflow: hidden;
+    border: 2px solid #3a5478;
+    background: #16273f;
+  }
+  .hero__badge {
+    position: absolute; left: 0; bottom: 36px;
+    background: #fff; color: #0B1626;
+    border-radius: 16px; padding: 16px 20px;
+    font-weight: 800; z-index: 2;
+  }
+
+  /* Hero steps */
+  .hero-steps {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    padding-bottom: 64px;
+  }
+  .hero-step { flex: 1; min-width: 150px; }
+  .hero-step__card {
+    background: #16273f; border: 1px solid #2c4263;
+    border-radius: 14px; height: 96px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-step__label { margin-top: 10px; }
+  .hero-step__num { color: #FF7A1A; font-weight: 800; }
+  .hero-step__label b { color: #fff; }
 
   /* Hero service cards - big two up top */
   .hero-services {
@@ -494,7 +494,7 @@ const faqs = [
   /* Stats band */
   .stats-band {
     background: #0f1d30; color: #FBF8F3;
-    padding: clamp(48px, 8vw, 72px) 6vw;
+    padding: clamp(48px, 8vw, 72px) max(20px, 6vw);
     display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 32px;
     border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263;
   }
@@ -554,12 +554,31 @@ const faqs = [
   /* Responsive */
   @media (max-width: 1024px) { .est-inner { grid-template-columns: 1fr; } }
   @media (max-width: 640px) {
-    .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 40px; padding-bottom: 40px; }
-    .hero__card { padding: 24px; }
-    .hero__sub { font-size: 17px; margin-bottom: 24px; }
-    .hero-services { gap: 12px; }
+    .hero { grid-template-columns: 1fr; gap: 0; padding-top: 40px; padding-bottom: 32px; }
+    .hero__sub { font-size: 16px; margin-bottom: 24px; }
+    /* Arch photo: switch to aspect-ratio so image is never stretched */
+    .hero__right {
+      height: auto;
+      aspect-ratio: 4 / 3;
+      margin-top: 32px;
+    }
+    .hero__arch-bg {
+      width: 82%; top: 20px;
+      height: calc(100% - 20px);
+    }
+    .hero__arch-photo {
+      width: 82%; right: 16px; top: 0;
+      height: 100%;
+    }
+    .hero__badge { font-size: 13px; padding: 10px 14px; bottom: 16px; border-radius: 12px; }
+    .hero-services { gap: 12px; margin: 0 8px; }
+    .hs-card { padding: 16px; min-height: auto; border-radius: 14px; gap: 6px; }
+    .hs-card__title { font-size: 16px; }
+    .hs-card__desc { font-size: 12px; line-height: 1.5; }
+    .hs-card__cta { font-size: 12px; }
+    .hs-card__label { font-size: 10px; padding: 3px 8px; }
     .hs-card { padding: 18px; min-height: auto; border-radius: 16px; gap: 8px; }
-    .hs-card__title { font-size: 19px; }
+    .hs-card__title { font-size: 17px; }
     .hs-card__desc { font-size: 13px; }
     .hs-card__cta { font-size: 13px; }
     .svc-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -567,18 +586,23 @@ const faqs = [
     .svc-card__title { font-size: 16px; }
     .svc-card__desc { font-size: 13px; }
     .why-card { padding: 20px; }
-    .why-card__title { font-size: 18px; }
+    .why-card__title { font-size: 16px; }
     .pricing-row { flex-direction: column; align-items: flex-start; padding: 18px 20px; }
+    .pricing-row__name { font-size: 16px; }
+    .pricing-row__price { font-size: 16px; }
     .pricing-row .btn { width: 100%; justify-content: center; }
     .est-inner { gap: 32px; }
     .est-widget { padding: 20px; }
+    .est-result__val { font-size: 19px; }
+    .step-title { font-size: 17px; }
+    .step-desc { font-size: 14px; }
     .stats-band { gap: 24px; }
     .photo-band { height: 280px; }
     .photo-band__overlay { padding-bottom: 32px; }
   }
   @media (max-width: 380px) {
-    .hero__card { padding: 20px; }
     .hero__btns .btn { width: 100%; }
-    .hs-card { padding: 20px; }
+    .hero__right { aspect-ratio: 5 / 4; }
+    .hs-card { padding: 16px; }
   }
 </style>

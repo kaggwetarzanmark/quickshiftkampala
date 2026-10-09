@@ -44,7 +44,7 @@
 
   /* Layout - from V2 .w class */
   --container:    1200px;
-  --px:           clamp(16px, 5vw, 32px);
+  --px:           clamp(24px, 5vw, 32px);
 
   /* Radii */
   --r-sm:    6px;
@@ -384,11 +384,11 @@ button, input, textarea, select { font: inherit; background: none; border: none;
 
 /* ── Responsive global helpers ─────────────────────────── */
 @media (max-width: 640px) {
-  :root { --px: 20px; }
   .card { padding: 20px; }
-  .lead { font-size: 17px; }
-  .faq-item summary { font-size: 16px; }
-  .faq-item p { font-size: 14px; }
+  .h2 { font-size: 24px; margin-bottom: 20px; }
+  .lead { font-size: 16px; }
+  .faq-item summary { font-size: 15px; }
+  .faq-item p { font-size: 13px; }
 }
 
 @media (max-width: 380px) {

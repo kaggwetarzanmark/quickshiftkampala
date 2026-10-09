@@ -10,11 +10,11 @@ const {
   title        = 'Ready to move? Get a free quote today.',
   subtitle     = 'We visit, measure and give you a fixed price within 24 hours. No obligation.',
   primaryLabel = 'Get a free quote',
-  primaryHref  = '/get-a-quote',
+  primaryHref  = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a free moving quote. Can you help?'),
   whatsappLabel = 'WhatsApp us',
 } = Astro.props;
 
-const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent('Hi! I need a free quote for office relocation.');
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a free quote for office relocation.');
 ---
 
 <section class="cta-band" aria-label="Call to action">

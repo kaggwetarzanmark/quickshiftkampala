@@ -44,9 +44,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     <h2 class="h2">Choose your office size.</h2>
     <div class="tier-grid">
       {[
-        { label:'Small office', size:'1 to 10 staff', price:'From UGX 1,500,000', desc:'Full packing, overnight transport and setup.', features:['Free on-site survey','Professional packing','Overnight transport','Furniture reassembly','Goods-in-transit insurance'], href:'/get-a-quote', featured:false },
-        { label:'Medium office', size:'11 to 50 staff', price:'From UGX 4,500,000', desc:'Everything in Small, plus dedicated project manager and IT handling.', features:['Free survey & floor plan','Dedicated project manager','Full packing & labelling','IT equipment handling','Overnight & weekend scheduling','Goods-in-transit insurance'], href:'/get-a-quote', featured:true },
-        { label:'Large office', size:'50+ staff', price:'Custom pricing', desc:'Tailored for complex, multi-floor or multi-branch moves.', features:['Free survey & phased plan','Senior project manager','Multi-crew overnight execution','IT infrastructure relocation','Decommissioning & disposal','Post-move support'], href:'/contact', featured:false },
+        { label:'Small office', size:'1 to 10 staff', price:'From UGX 1,500,000', desc:'Full packing, overnight transport and setup.', features:['Free on-site survey','Professional packing','Overnight transport','Furniture reassembly','Goods-in-transit insurance'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:false },
+        { label:'Medium office', size:'11 to 50 staff', price:'From UGX 4,500,000', desc:'Everything in Small, plus dedicated project manager and IT handling.', features:['Free survey & floor plan','Dedicated project manager','Full packing & labelling','IT equipment handling','Overnight & weekend scheduling','Goods-in-transit insurance'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:true },
+        { label:'Large office', size:'50+ staff', price:'Custom pricing', desc:'Tailored for complex, multi-floor or multi-branch moves.', features:['Free survey & phased plan','Senior project manager','Multi-crew overnight execution','IT infrastructure relocation','Decommissioning & disposal','Post-move support'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:false },
       ].map(t => (
         <div class={`tier-card ${t.featured ? 'tier-card--hi' : ''}`}>
           {t.featured && <div class="tier-badge">Most popular</div>}
@@ -116,7 +116,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   .extras-row__s { font-size: 14px; font-weight: 500; color: #cdd8e8; }
   .extras-row__p { font-size: 14px; font-weight: 700; color: #FF7A1A; white-space: nowrap; }
 
-  /* ── Responsive ── */
+  /* -- Responsive -- */
   @media (max-width: 600px) {
     .tier-grid { grid-template-columns: 1fr; }
     .tier-card { padding: 22px; }

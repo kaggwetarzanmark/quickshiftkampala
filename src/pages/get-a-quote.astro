@@ -1,136 +1,73 @@
 ﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a free moving quote. Can you help?');
 ---
-<!-- KW research: Primary = free moving quote kampala
-     Secondary: get moving estimate, office moving quote, request moving quote uganda, free on-site survey
-     Title (exact): Get a Free Moving Quote | Office Movers Kampala
-     Meta (exact, 155 chars): Request your free, no-obligation moving quote. Tell us about your office or home move in Kampala and we'll provide a transparent estimate within 24 hours.
-     H1: Get a free moving quote. -->
 <BaseLayout
   title="Get a Free Moving Quote | Office Movers Kampala"
-  description="Request your free, no-obligation moving quote. Tell us about your office or home move in Kampala and we'll provide a transparent estimate within 24 hours."
+  description="Request your free, no-obligation moving quote in Kampala. WhatsApp us directly and we'll respond within one hour."
 >
-  <PageHero eyebrow="Free quote" title="Get a free moving quote." subtitle="Request your free, no-obligation office moving quote. Tell us about your move in Kampala and we'll provide a transparent fixed estimate within 24 hours." crumbs={[{label:'Home',href:'/'},{label:'Get a Quote'}]} />
-  <div class="w page-body">
-    <div class="quote-layout">
-      <!-- Form -->
-      <div class="quote-form-wrap">
-        <h2 class="h2" style="font-size:24px;margin-bottom:24px">Request your free quote</h2>
-        <form name="full-quote" method="POST" action="/thank-you" class="qform" novalidate>
-          <div style="display:none" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" /></div>
-          <div class="qform-row">
-            <div class="qform-field">
-              <label class="form-label" for="q-name">Your name *</label>
-              <input type="text" id="q-name" name="name" class="form-input" placeholder="Jane Nakato" required autocomplete="name" />
-            </div>
-            <div class="qform-field">
-              <label class="form-label" for="q-phone">Phone / WhatsApp *</label>
-              <input type="tel" id="q-phone" name="phone" class="form-input" placeholder="+256 7XX XXX XXX" required autocomplete="tel" />
-            </div>
-          </div>
-          <div class="qform-field">
-            <label class="form-label" for="q-company">Company / Organisation</label>
-            <input type="text" id="q-company" name="company" class="form-input" placeholder="Acme Uganda Ltd" autocomplete="organization" />
-          </div>
-          <div class="qform-field">
-            <label class="form-label" for="q-email">Email address</label>
-            <input type="email" id="q-email" name="email" class="form-input" placeholder="jane@company.ug" autocomplete="email" />
-          </div>
-          <div class="qform-field">
-            <label class="form-label" for="q-type">Type of move *</label>
-            <select id="q-type" name="move_type" class="form-select" required>
-              <option value="" disabled selected>Select move type</option>
-              <option>Office relocation</option>
-              <option>Corporate / multi-branch relocation</option>
-              <option>After-hours / weekend move</option>
-              <option>Furniture moving only</option>
-              <option>Office decommissioning</option>
-              <option>Home / residential move</option>
-              <option>International move</option>
-            </select>
-          </div>
-          <div class="qform-row">
-            <div class="qform-field">
-              <label class="form-label" for="q-from">Moving from *</label>
-              <select id="q-from" name="from_district" class="form-select" required>
-                <option value="" disabled selected>Select district</option>
-                <option>Nakasero</option><option>Kololo</option><option>Ntinda</option><option>Bugolobi</option><option>Naguru</option><option>Muyenga</option><option>Bukoto</option><option>Industrial Area</option><option>Entebbe</option><option>Other</option>
-              </select>
-            </div>
-            <div class="qform-field">
-              <label class="form-label" for="q-to">Moving to *</label>
-              <select id="q-to" name="to_district" class="form-select" required>
-                <option value="" disabled selected>Select district</option>
-                <option>Nakasero</option><option>Kololo</option><option>Ntinda</option><option>Bugolobi</option><option>Naguru</option><option>Muyenga</option><option>Bukoto</option><option>Industrial Area</option><option>Entebbe</option><option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="qform-row">
-            <div class="qform-field">
-              <label class="form-label" for="q-size">Office / team size</label>
-              <select id="q-size" name="office_size" class="form-select">
-                <option value="" disabled selected>Select size</option>
-                <option>1 to 10 staff</option><option>11 to 50 staff</option><option>50+ staff</option><option>Home / residential</option>
-              </select>
-            </div>
-            <div class="qform-field">
-              <label class="form-label" for="q-date">Preferred move date</label>
-              <input type="date" id="q-date" name="move_date" class="form-input" min={new Date().toISOString().split('T')[0]} />
-            </div>
-          </div>
-          <div class="qform-field">
-            <label class="form-label" for="q-notes">Additional details</label>
-            <textarea id="q-notes" name="notes" class="form-textarea" placeholder="Number of floors, specialist equipment, current building name, preferred move time..."></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send my quote request →</button>
-          <p class="qform-note">We won't share your details. You'll hear from us within one hour.</p>
-        </form>
-      </div>
-
-      <!-- Sidebar -->
-      <aside class="quote-aside">
-        <div class="aside-card">
-          <h3 class="aside-card__title">Why Quick Shift?</h3>
-          <ul class="check-list">
-            {['Licensed & fully insured','Fixed price - no hourly rates','Quote within 24 hours','Overnight & weekend moves','Dedicated project manager','4.9★ Google rating'].map(t => <li>{t}</li>)}
-          </ul>
-        </div>
-        <div class="aside-card aside-card--wa">
-          <p class="aside-wa-title">Prefer to talk?</p>
-          <p class="aside-wa-sub">WhatsApp or call us directly for a quick verbal estimate.</p>
-          <a href="https://wa.me/256700000000" class="btn btn--wa" style="width:100%;justify-content:center;margin-top:14px" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
-          <a href="tel:+256700000000" class="btn btn--outline" style="width:100%;justify-content:center;margin-top:10px">Call +256 700 000000</a>
-        </div>
-      </aside>
+  <section class="redirect-section w">
+    <span class="eyebrow">Free quote</span>
+    <h1 class="redirect__h1">Get a free moving quote<span style="color:#FF7A1A">.</span></h1>
+    <p class="redirect__sub">The fastest way to get a quote is straight on WhatsApp. Send us a message and we'll respond within one hour.</p>
+    <a href={waUrl} class="btn btn--wa btn--lg redirect__btn" target="_blank" rel="noopener noreferrer">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
+      WhatsApp us for a quote
+    </a>
+    <p class="redirect__or">Or call us directly:</p>
+    <div class="redirect__phones">
+      <a href="tel:+256782792648" class="btn btn--outline">+256 782 792 648</a>
+      <a href="tel:+256753803582" class="btn btn--outline">+256 753 803 582</a>
     </div>
-  </div>
+  </section>
   <WhatsAppButton />
 </BaseLayout>
-<style>
-  .page-body { padding-top: 64px; padding-bottom: 72px; }
-  .quote-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
-  @media (min-width: 960px) { .quote-layout { grid-template-columns: 1fr 320px; } }
-  .quote-form-wrap { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 32px; }
-  .qform { display: flex; flex-direction: column; gap: 16px; }
-  .qform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 600px) { .qform-row { grid-template-columns: 1fr; } }
-  .qform-field { display: flex; flex-direction: column; gap: 6px; }
-  .qform-note { font-size: 12px; color: #9fb0c8; text-align: center; }
-  .quote-aside { display: flex; flex-direction: column; gap: 16px; }
-  .aside-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 22px; }
-  .aside-card--wa { border-color: rgba(37,211,102,0.3); }
-  .aside-card__title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; }
-  .aside-wa-title { font-weight: 800; font-size: 16px; color: #fff; }
-  .aside-wa-sub { font-size: 13px; color: #9fb0c8; margin-top: 4px; line-height: 1.6; }
 
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .quote-form-wrap { padding: 22px; }
-    .page-body { padding-top: 40px; padding-bottom: 48px; }
+<style>
+  .redirect-section {
+    padding: clamp(64px, 10vw, 120px) 0;
+    max-width: 640px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  @media (max-width: 380px) {
-    .quote-form-wrap { padding: 18px; }
+  .redirect__h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.06;
+    margin: 8px 0 20px;
+    color: #fff;
+  }
+  .redirect__sub {
+    font-size: 18px;
+    color: #9fb0c8;
+    line-height: 1.65;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .redirect__btn {
+    font-size: 18px;
+    padding: 18px 36px;
+    border-radius: 12px;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .redirect__or {
+    font-size: 13px;
+    color: #9fb0c8;
+    margin-bottom: 14px;
+  }
+  .redirect__phones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    .redirect__btn { width: 100%; justify-content: center; }
+    .redirect__phones .btn { width: 100%; }
   }
 </style>
