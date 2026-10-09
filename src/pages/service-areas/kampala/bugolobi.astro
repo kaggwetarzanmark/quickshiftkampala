@@ -57,4 +57,11 @@ import WhatsAppButton from '../../../components/WhatsAppButton.astro';
   .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
   @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
   .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .two-col { gap: 32px; }
+    .side-photo { height: 280px; }
+  }
 </style>

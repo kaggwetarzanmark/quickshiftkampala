@@ -62,16 +62,16 @@ const clients = [
   }
 
   .trust-stat__value {
-    font-family: var(--font-heading);
+    font-family: var(--font);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900;
-    color: var(--color-accent);
+    font-weight: 800;
+    color: var(--accent);
     line-height: 1;
   }
 
   .trust-stat__label {
     font-size: var(--text-sm);
-    color: rgba(255,255,255,0.65);
+    color: var(--muted);
     font-weight: 500;
   }
 
@@ -86,7 +86,7 @@ const clients = [
   .trust-logos__label {
     font-size: var(--text-sm);
     font-weight: 700;
-    color: var(--color-text-muted);
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: nowrap;
@@ -100,12 +100,12 @@ const clients = [
 
   .trust-logos__item {
     padding: var(--space-2) var(--space-4);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
     font-size: var(--text-sm);
     font-weight: 600;
-    color: var(--color-text-muted);
+    color: var(--muted-light);
     white-space: nowrap;
   }
 </style>

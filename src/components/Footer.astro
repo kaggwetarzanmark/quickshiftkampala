@@ -8,7 +8,7 @@
     <!-- Brand -->
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Quick Shift Kampala">
-        Quick Shift<span class="footer-dot" aria-hidden="true">.</span>
+        Quick Shift Kampala<span class="footer-dot" aria-hidden="true">.</span>
       </a>
       <p>Office movers in Kampala, Uganda.<br/>Licensed, insured, fixed price.</p>
       <div class="footer-social">
@@ -71,7 +71,7 @@
     font-family: 'Sora', sans-serif;
     font-size: 14px;
     border-top: 1px solid #2c4263;
-    margin-top: 72px;
+    margin-top: clamp(48px, 7vw, 72px);
   }
 
   /* Top grid */
@@ -102,8 +102,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background: rgba(255,255,255,0.06);
     border-radius: 8px;
     color: #9fb0c8;
@@ -149,5 +149,6 @@
   @media (max-width: 640px) {
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; align-items: center; }
     .footer-bottom span:nth-child(2) { display: none; }
+    .footer-top { padding-top: 40px; padding-bottom: 32px; gap: 32px; }
   }
 </style>

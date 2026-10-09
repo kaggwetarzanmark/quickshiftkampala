@@ -22,64 +22,70 @@ const { number, title, description, href, featured = false } = Astro.props;
 
 <style>
   .svc-card {
-    border: 2px solid #1C1917;
-    border-radius: 20px;
-    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 24px;
     display: block;
     text-decoration: none;
-    color: #1C1917;
-    background: #fff;
-    transition: box-shadow .18s, transform .18s;
+    color: var(--text);
+    background: var(--bg-card);
+    transition: border-color .18s, background .18s;
   }
 
   .svc-card:hover {
-    box-shadow: 6px 6px 0 #1C1917;
-    transform: translate(-2px, -2px);
+    border-color: var(--accent);
+    background: #132030;
     opacity: 1;
   }
 
   .svc-card--orange {
-    background: #FF6A00;
-    color: #1C1917;
+    background: linear-gradient(135deg, var(--accent) 0%, #e55a00 100%);
+    border-color: transparent;
+    color: #fff;
   }
+  .svc-card--orange:hover { background: linear-gradient(135deg, #ff8c35 0%, #f06010 100%); }
 
   .svc-card__num {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: 40px;
-    letter-spacing: -.03em;
+    font-family: var(--font);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #C2410C;
+    color: var(--accent);
     line-height: 1;
   }
-  .svc-card--orange .svc-card__num { color: #1C1917; }
+  .svc-card--orange .svc-card__num { color: rgba(255,255,255,0.7); }
 
   .svc-card__title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    letter-spacing: -.03em;
-    text-transform: uppercase;
+    font-family: var(--font);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -.02em;
     margin: 10px 0 8px;
-    color: #1C1917;
-    line-height: 1;
+    color: var(--text);
+    line-height: 1.1;
   }
+  .svc-card--orange .svc-card__title { color: #fff; }
 
   .svc-card__desc {
     margin: 0 0 16px;
     line-height: 1.6;
-    color: #44403C;
-    font-size: 15px;
+    color: var(--muted);
+    font-size: 14px;
   }
-  .svc-card--orange .svc-card__desc { color: #1C1917; }
+  .svc-card--orange .svc-card__desc { color: rgba(255,255,255,0.85); }
 
   .svc-card__arrow {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    color: #FF6A00;
+    color: var(--accent);
     transition: transform .15s;
     display: inline-block;
   }
-  .svc-card--orange .svc-card__arrow { color: #1C1917; }
+  .svc-card--orange .svc-card__arrow { color: #fff; }
   .svc-card:hover .svc-card__arrow { transform: translateX(4px); }
+
+  @media (max-width: 380px) {
+    .svc-card { padding: 20px; }
+  }
 </style>

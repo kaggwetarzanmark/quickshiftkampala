@@ -74,4 +74,16 @@ import WhatsAppButton from '../../components/WhatsAppButton.astro';
   .tl-time  { font-weight: 800; font-size: 13px; color: #FF7A1A; text-align: right; padding-top: 2px; }
   .tl-dot   { width: 10px; height: 10px; border-radius: 50%; background: #FF7A1A; border: 2px solid #0B1626; box-shadow: 0 0 0 2px #FF7A1A; margin-top: 4px; flex-shrink: 0; position: relative; z-index: 1; }
   .tl-event { font-size: 15px; color: #cdd8e8; line-height: 1.5; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .two-col { gap: 32px; }
+    .side-photo { height: 280px; }
+  }
+  @media (max-width: 480px) {
+    .tl-row { grid-template-columns: 72px 20px 1fr; gap: 10px; }
+    .tl-time { font-size: 12px; }
+    .tl-event { font-size: 14px; }
+  }
 </style>

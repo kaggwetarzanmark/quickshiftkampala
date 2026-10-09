@@ -115,4 +115,14 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   .extras-row:hover { background: #132030; }
   .extras-row__s { font-size: 14px; font-weight: 500; color: #cdd8e8; }
   .extras-row__p { font-size: 14px; font-weight: 700; color: #FF7A1A; white-space: nowrap; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .tier-grid { grid-template-columns: 1fr; }
+    .tier-card { padding: 22px; }
+  }
+  @media (max-width: 380px) {
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .extras-row, .extras-head { padding-left: 14px; padding-right: 14px; }
+  }
 </style>

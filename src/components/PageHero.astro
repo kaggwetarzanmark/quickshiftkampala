@@ -109,4 +109,13 @@ const { eyebrow, title, subtitle, image, imageAlt, crumbs, cta, ctaSecondary } =
     flex-wrap: wrap;
     gap: 12px;
   }
+
+  @media (max-width: 640px) {
+    .page-hero { padding: 48px 0 48px; }
+    .page-hero__sub { font-size: 16px; margin-bottom: 24px; }
+    .page-hero__btns .btn { width: 100%; }
+  }
+  @media (max-width: 380px) {
+    .page-hero { padding: 40px 0 40px; }
+  }
 </style>

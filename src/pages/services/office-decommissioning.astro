@@ -61,4 +61,11 @@ const items = ['Furniture removal & documentation','IT & e-waste responsible dis
   .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
   .inc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 24px; }
   .inc-item { display: flex; align-items: flex-start; gap: 10px; background: #111f35; border: 1px solid #2c4263; border-radius: 10px; padding: 12px 14px; font-size: 14px; font-weight: 500; color: #cdd8e8; line-height: 1.4; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .two-col { gap: 32px; }
+    .side-photo { height: 280px; }
+  }
 </style>

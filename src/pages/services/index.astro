@@ -46,4 +46,13 @@ const services = [
   .svc-card__title { font-size: 20px; font-weight: 800; color: #fff; }
   .svc-card__desc  { font-size: 14px; color: #9fb0c8; line-height: 1.6; flex: 1; }
   .svc-card__arrow { font-size: 13px; color: #FF7A1A; font-weight: 700; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc-card { padding: 22px; }
+  }
+  @media (max-width: 380px) {
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+  }
 </style>

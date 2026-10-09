@@ -114,4 +114,13 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 600px) { .cform-row { grid-template-columns: 1fr; } }
   .cform-field { display: flex; flex-direction: column; gap: 6px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .contact-form-wrap { padding: 22px; }
+    .page-body { padding-top: 40px; padding-bottom: 48px; }
+  }
+  @media (max-width: 380px) {
+    .contact-form-wrap { padding: 18px; }
+  }
 </style>
