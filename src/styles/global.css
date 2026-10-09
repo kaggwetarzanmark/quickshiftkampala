@@ -384,6 +384,7 @@ button, input, textarea, select { font: inherit; background: none; border: none;
 
 /* ── Responsive global helpers ─────────────────────────── */
 @media (max-width: 640px) {
+  :root { --px: 20px; }
   .card { padding: 20px; }
   .lead { font-size: 17px; }
   .faq-item summary { font-size: 16px; }
