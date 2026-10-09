@@ -3,82 +3,220 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CTABanner from '../components/CTABanner.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a moving quote. Can you help?');
+
+const silverPrices = [
+  { size: 'Studio room', price: 'UGX 435,500' },
+  { size: '1 bedroom',   price: 'UGX 539,000' },
+  { size: '2 bedroom',   price: 'UGX 643,000' },
+  { size: '3 bedroom',   price: 'UGX 780,000' },
+  { size: '4 bedroom',   price: 'UGX 1,040,000' },
+  { size: '5 bedroom',   price: 'UGX 1,300,000' },
+];
+
+const goldPrices = [
+  { size: 'Studio room', price: 'UGX 565,500' },
+  { size: '1 bedroom',   price: 'UGX 700,700' },
+  { size: '2 bedroom',   price: 'UGX 835,900' },
+  { size: '3 bedroom',   price: 'UGX 1,014,000' },
+  { size: '4 bedroom',   price: 'UGX 1,352,000' },
+  { size: '5 bedroom',   price: 'UGX 1,690,000' },
+];
+
+const silverFeatures = [
+  'Delivery up to 20km',
+  'Basic equipment',
+  'Recommendable packaging',
+  'Temporary storage',
+  'Basic furniture disassembly & reassembly',
+  'Chattel loading & offloading',
+  'Max 8 hours duration',
+];
+
+const goldFeatures = [
+  'Delivery up to 40km',
+  'Recommendable packaging',
+  'Temporary storage',
+  'Basic furniture disassembly & reassembly',
+  'Chattel loading & offloading',
+  'Max 15 hours duration',
+  'Basic equipment',
+  'Specialised packing — white glove treatment',
+  'High-end storage options',
+  'Concierge services',
+];
 ---
-<!-- KW research: Primary = office moving cost kampala
-     Secondary: movers prices uganda, how much do movers cost in kampala, moving company rates, office relocation pricing
-     Title (exact): Office Moving Prices in Kampala | Transparent Rates
-     Meta (exact, 155 chars): Clear, transparent office moving prices in Kampala. No hidden fees. Small, medium & large office rates. Get an instant estimate or book your free on-site survey.
-     H1: Clear prices. No surprises. -->
+<!-- SEO: Primary = movers price list Kampala / moving company rates Uganda
+     Secondary: house shifting cost kampala, how much do movers cost kampala, office moving prices kampala
+     Title: Moving Prices Kampala | Silver & Gold Packages from UGX 435,500
+     Meta: Transparent moving prices in Kampala. Silver & Gold home packages plus office tiers. Fixed rates, no hidden fees. All rates subject to free on-site inspection.
+-->
 <BaseLayout
-  title="Office Moving Prices in Kampala | Transparent Rates"
-  description="Clear, transparent office moving prices in Kampala. No hidden fees. Small, medium & large office rates. Get an instant estimate or book your free on-site survey."
+  title="Moving Prices Kampala | Silver & Gold Packages from UGX 435,500"
+  description="Transparent moving prices in Kampala. Silver & Gold home packages plus office tiers. Fixed rates, no hidden fees. All rates subject to free on-site inspection."
 >
-  <PageHero eyebrow="Pricing" title="Clear prices. No surprises." subtitle="Office moving prices in Kampala - transparent, no hidden fees. Moving company rates for small, medium and large offices. Get an instant estimate or book your free on-site survey." crumbs={[{label:'Home',href:'/'},{label:'Pricing'}]} />
+  <PageHero
+    eyebrow="Pricing"
+    title="Clear prices. No surprises."
+    subtitle="Two residential packages and three office tiers — all fixed-price, all-inclusive. Every rate is subject to a free on-site survey."
+    crumbs={[{label:'Home',href:'/'},{label:'Pricing'}]}
+  />
+
   <div class="w page-body">
-    <div class="two-col" style="margin-bottom:72px">
+
+    <!-- HOW IT WORKS -->
+    <div class="how-grid" style="margin-bottom:72px">
       <div>
-        <span class="eyebrow">How it works</span>
-        <h2 class="h2">A fixed price, guaranteed.</h2>
+        <span class="eyebrow">How pricing works</span>
+        <h2 class="h2">A fixed price, every time.</h2>
         <div class="prose">
-          <p>We don't charge by the hour. We visit your office, measure every room, assess access requirements and give you a single fixed price that covers everything from packing to final setup.</p>
-          <p>The prices below are starting points. Your actual quote depends on distance, floor level and the services you need. The only way to get your exact number is the free survey.</p>
+          <p>We don't charge by the hour. Every job starts with a free on-site survey where we assess the volume, access, distance and any special requirements. You receive a written fixed quote within 24 hours — valid for 30 days.</p>
+          <p>The prices below are the starting rates per package tier. Your exact price depends on the home size, distance and the services included. Disclaimer: all rates are subject to inspection. Terms and conditions apply.</p>
         </div>
+        <a href={waUrl} class="btn btn--primary btn--lg" style="margin-top:24px" target="_blank" rel="noopener noreferrer">WhatsApp for a free quote</a>
       </div>
-      <div class="pricing-steps">
+      <div class="how-steps">
         {[
-          {n:'1',t:'Book a free survey',d:'We visit at a time that suits you - no obligation.'},
-          {n:'2',t:'Receive your fixed quote',d:'Written quote within 24 hours. Valid for 30 days.'},
-          {n:'3',t:'Approve and schedule',d:'Confirm the date and we handle everything else.'},
-          {n:'4',t:'Pay on completion',d:'No large upfront deposit required for most moves.'},
+          { n:'1', t:'Book a free survey',     d:'We visit at a time that suits you. No obligation.' },
+          { n:'2', t:'Receive your fixed quote', d:'Written quote within 24 hours. Valid for 30 days.' },
+          { n:'3', t:'Approve and schedule',   d:'Confirm your date and we handle everything.' },
+          { n:'4', t:'Pay on completion',      d:'No large upfront deposit required for most moves.' },
         ].map(s => (
-          <div class="p-step">
-            <span class="p-step__n">{s.n}</span>
-            <div><strong class="p-step__t">{s.t}</strong><p class="p-step__d">{s.d}</p></div>
+          <div class="how-step">
+            <span class="how-step__n">{s.n}</span>
+            <div>
+              <strong class="how-step__t">{s.t}</strong>
+              <p class="how-step__d">{s.d}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Tiers -->
-    <span class="eyebrow">Pricing tiers</span>
-    <h2 class="h2">Choose your office size.</h2>
-    <div class="tier-grid">
-      {[
-        { label:'Small office', size:'1 to 10 staff', price:'From UGX 1,500,000', desc:'Full packing, overnight transport and setup.', features:['Free on-site survey','Professional packing','Overnight transport','Furniture reassembly','Goods-in-transit insurance'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:false },
-        { label:'Medium office', size:'11 to 50 staff', price:'From UGX 4,500,000', desc:'Everything in Small, plus dedicated project manager and IT handling.', features:['Free survey & floor plan','Dedicated project manager','Full packing & labelling','IT equipment handling','Overnight & weekend scheduling','Goods-in-transit insurance'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:true },
-        { label:'Large office', size:'50+ staff', price:'Custom pricing', desc:'Tailored for complex, multi-floor or multi-branch moves.', features:['Free survey & phased plan','Senior project manager','Multi-crew overnight execution','IT infrastructure relocation','Decommissioning & disposal','Post-move support'], href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F', featured:false },
-      ].map(t => (
-        <div class={`tier-card ${t.featured ? 'tier-card--hi' : ''}`}>
-          {t.featured && <div class="tier-badge">Most popular</div>}
-          <div class="tier-card__head">
-            <strong class="tier-card__name">{t.label}</strong>
-            <span class="tier-card__size">{t.size}</span>
-          </div>
-          <p class="tier-card__desc">{t.desc}</p>
-          <div class="tier-card__price">{t.price}</div>
-          <ul class="check-list" style="margin-bottom:20px">
-            {t.features.map(f => <li>{f}</li>)}
-          </ul>
-          <a href={t.href} class={`btn ${t.featured ? 'btn--primary' : 'btn--outline'}`} style="width:100%;justify-content:center">
-            {t.featured ? 'Get quote' : t.label === 'Large office' ? 'Speak to us' : 'Get quote'}
-          </a>
+    <!-- ── RESIDENTIAL PACKAGES ── -->
+    <span class="eyebrow">Residential packages</span>
+    <h2 class="h2">Home & house shifting prices.</h2>
+    <p class="lead" style="font-size:16px;margin-bottom:36px">Choose the package that fits your move distance and needs. Both include packing, transport, and setup at the new address.</p>
+
+    <div class="pkg-grid">
+
+      <!-- SILVER -->
+      <div class="pkg-card">
+        <div class="pkg-card__header pkg-card__header--silver">
+          <span class="pkg-card__tier">SILVER</span>
+          <span class="pkg-card__tagline">Up to 20km &middot; Max 8 hours</span>
         </div>
-      ))}
+        <div class="pkg-card__features">
+          <ul class="check-list">
+            {silverFeatures.map(f => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="pkg-card__prices">
+          {silverPrices.map(p => (
+            <div class="pkg-price-row">
+              <span class="pkg-price-row__size">{p.size}</span>
+              <span class="pkg-price-row__price">{p.price}</span>
+            </div>
+          ))}
+        </div>
+        <a href={waUrl} class="btn btn--outline" style="width:100%;justify-content:center;margin-top:20px;display:flex" target="_blank" rel="noopener noreferrer">Get Silver quote</a>
+      </div>
+
+      <!-- GOLD -->
+      <div class="pkg-card pkg-card--gold">
+        <div class="pkg-card__badge">Most popular</div>
+        <div class="pkg-card__header pkg-card__header--gold">
+          <span class="pkg-card__tier">GOLD</span>
+          <span class="pkg-card__tagline">Up to 40km &middot; Max 15 hours</span>
+        </div>
+        <div class="pkg-card__features">
+          <ul class="check-list">
+            {goldFeatures.map(f => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="pkg-card__prices">
+          {goldPrices.map(p => (
+            <div class="pkg-price-row">
+              <span class="pkg-price-row__size">{p.size}</span>
+              <span class="pkg-price-row__price">{p.price}</span>
+            </div>
+          ))}
+        </div>
+        <a href={waUrl} class="btn btn--primary" style="width:100%;justify-content:center;margin-top:20px;display:flex" target="_blank" rel="noopener noreferrer">Get Gold quote</a>
+      </div>
+
     </div>
 
-    <!-- Extras -->
+    <p class="disclaimer">Disclaimer: All rates are subject to inspection. Terms and conditions apply.</p>
+
+    <!-- ── OFFICE PACKAGES ── -->
+    <section style="margin-top:80px">
+      <span class="eyebrow">Office packages</span>
+      <h2 class="h2">Office relocation prices.</h2>
+      <p class="lead" style="font-size:16px;margin-bottom:36px">Overnight moves, zero working days lost. Price depends on office size, floor level and access. All quotes are fixed after a free survey.</p>
+
+      <div class="office-grid">
+        {[
+          {
+            label: 'Small office',
+            size: '1–10 staff',
+            price: 'From UGX 1,500,000',
+            desc: 'Full packing, overnight transport and complete setup.',
+            features: ['Free on-site survey', 'Professional packing', 'Overnight transport', 'Furniture reassembly', 'Goods-in-transit insurance'],
+            featured: false,
+          },
+          {
+            label: 'Medium office',
+            size: '11–50 staff',
+            price: 'From UGX 4,500,000',
+            desc: 'Everything in Small, plus dedicated project manager and IT equipment handling.',
+            features: ['Free survey & floor plan', 'Dedicated project manager', 'Full packing & labelling', 'IT equipment handling', 'Overnight & weekend scheduling', 'Goods-in-transit insurance'],
+            featured: true,
+          },
+          {
+            label: 'Large office',
+            size: '50+ staff',
+            price: 'Custom pricing',
+            desc: 'Tailored for complex, multi-floor or multi-branch relocations.',
+            features: ['Free survey & phased plan', 'Senior project manager', 'Multi-crew overnight execution', 'IT infrastructure relocation', 'Decommissioning & disposal', 'Post-move support'],
+            featured: false,
+          },
+        ].map(t => (
+          <div class={`office-card ${t.featured ? 'office-card--hi' : ''}`}>
+            {t.featured && <div class="office-badge">Most popular</div>}
+            <div class="office-card__head">
+              <strong class="office-card__name">{t.label}</strong>
+              <span class="office-card__size">{t.size}</span>
+            </div>
+            <p class="office-card__desc">{t.desc}</p>
+            <div class="office-card__price">{t.price}</div>
+            <ul class="check-list" style="margin-bottom:20px">
+              {t.features.map(f => <li>{f}</li>)}
+            </ul>
+            <a href={waUrl} class={`btn ${t.featured ? 'btn--primary' : 'btn--outline'}`} style="width:100%;justify-content:center" target="_blank" rel="noopener noreferrer">
+              {t.label === 'Large office' ? 'Speak to us' : 'Get quote'}
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ADD-ONS -->
     <section style="margin-top:72px">
       <span class="eyebrow">Add-on services</span>
       <h2 class="h2">Other services & what they cost.</h2>
       <div class="extras-table">
-        <div class="extras-head"><span>Service</span><span>Starting price</span></div>
+        <div class="extras-head"><span>Service</span><span>Rate</span></div>
         {[
-          {s:'Office decommissioning & clearance', p:'From UGX 800,000'},
-          {s:'Furniture-only move',                p:'From UGX 600,000'},
-          {s:'After-hours premium',                p:'No premium - included'},
-          {s:'Weekend move',                       p:'No premium - included'},
-          {s:'Building management coordination',   p:'Included in all tiers'},
-          {s:'Goods-in-transit insurance',         p:'Included in all tiers'},
+          { s: 'Weekend or after-hours move',        p: 'No premium — same fixed price' },
+          { s: 'Month-end availability',             p: 'Book 2–3 weeks ahead' },
+          { s: 'Office decommissioning & clearance', p: 'From UGX 800,000' },
+          { s: 'Furniture-only move',                p: 'From UGX 600,000' },
+          { s: 'Building management coordination',   p: 'Included in all tiers' },
+          { s: 'Goods-in-transit insurance',         p: 'Included in all tiers' },
+          { s: 'Packing materials',                  p: 'Included in all tiers' },
+          { s: 'Furniture disassembly & reassembly', p: 'Included in all tiers' },
         ].map(e => (
           <div class="extras-row">
             <span class="extras-row__s">{e.s}</span>
@@ -87,28 +225,99 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         ))}
       </div>
     </section>
+
+    <!-- FAQ -->
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">Pricing questions</span>
+      <h2 class="h2">Common questions about cost.</h2>
+      {[
+        { q: 'Are the prices fixed or can they change?', a: 'All prices shown are starting rates. Your exact price is confirmed after a free on-site survey and is issued as a written fixed quote. Once you approve it, the price does not change — no surprise extras on move day.' },
+        { q: 'Which residential package should I choose — Silver or Gold?', a: 'If your move is within 20km and you need a straightforward move, Silver is the right choice. If you are moving further (up to 40km), need more time, or want white glove packing and concierge services, choose Gold. Not sure? WhatsApp us and we will advise.' },
+        { q: 'Do you charge extra for weekends or after-hours?', a: 'No. Weekend and after-hours moves are available at the same fixed price as weekday moves. This is one of our key differentiators — no overtime premium.' },
+        { q: 'What is included in the price?', a: 'All packages include packing materials, loading and offloading, transport, and basic furniture disassembly and reassembly. The Gold package also includes white glove specialised packing, high-end storage options and concierge services.' },
+        { q: 'Do I pay a deposit upfront?', a: 'No large upfront deposit is required for most moves. Payment is typically made on completion. Specific terms will be confirmed when we issue your fixed quote.' },
+        { q: 'What if the move takes longer than expected?', a: 'Silver allows up to 8 hours and Gold allows up to 15 hours. If a move is likely to exceed the duration, we will advise you during the free survey so there are no surprises.' },
+      ].map(f => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
   </div>
-  <CTABanner title="Ready for your fixed price?" subtitle="Book your free on-site survey - we visit, measure and send your written quote within 24 hours." primaryLabel="Book a free survey" whatsappLabel="WhatsApp for quick estimate" />
+
+  <CTABanner
+    title="Ready for your fixed price?"
+    subtitle="WhatsApp us your home size or office details — we respond within one hour and arrange your free survey."
+    primaryLabel="Get your fixed quote"
+  />
   <WhatsAppButton />
 </BaseLayout>
+
 <style>
   .page-body { padding-top: 64px; padding-bottom: 72px; }
-  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
-  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
-  .pricing-steps { display: flex; flex-direction: column; gap: 14px; }
-  .p-step { display: flex; gap: 16px; align-items: flex-start; background: #111f35; border: 1px solid #2c4263; border-radius: 12px; padding: 16px; }
-  .p-step__n { width: 32px; height: 32px; background: #FF7A1A; color: #0B1626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
-  .p-step__t { font-weight: 800; font-size: 15px; color: #fff; display: block; margin-bottom: 2px; }
-  .p-step__d { font-size: 13px; color: #9fb0c8; margin: 0; line-height: 1.5; }
-  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 28px; }
-  .tier-card { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; position: relative; }
-  .tier-card--hi { border-color: #FF7A1A; }
-  .tier-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #FF7A1A; color: #0B1626; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 99px; white-space: nowrap; }
-  .tier-card__head { display: flex; flex-direction: column; gap: 3px; }
-  .tier-card__name { font-size: 22px; font-weight: 800; color: #fff; }
-  .tier-card__size { font-size: 13px; color: #9fb0c8; }
-  .tier-card__desc { font-size: 14px; color: #9fb0c8; line-height: 1.6; }
-  .tier-card__price { font-size: 20px; font-weight: 800; color: #FF7A1A; padding: 12px 0; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+
+  /* How it works */
+  .how-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
+  @media (min-width: 900px) { .how-grid { grid-template-columns: 1fr 1fr; } }
+  .how-steps { display: flex; flex-direction: column; gap: 12px; }
+  .how-step { display: flex; gap: 16px; align-items: flex-start; background: #111f35; border: 1px solid #2c4263; border-radius: 12px; padding: 16px; }
+  .how-step__n { width: 32px; height: 32px; background: #FF7A1A; color: #0B1626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .how-step__t { font-weight: 800; font-size: 15px; color: #fff; display: block; margin-bottom: 2px; }
+  .how-step__d { font-size: 13px; color: #9fb0c8; margin: 0; line-height: 1.5; }
+
+  /* Residential package grid */
+  .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .pkg-grid { grid-template-columns: 1fr; } }
+
+  .pkg-card {
+    background: #111f35; border: 1px solid #2c4263;
+    border-radius: 20px; overflow: hidden;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .pkg-card--gold { border-color: #FF7A1A; }
+
+  .pkg-card__badge {
+    position: absolute; top: -1px; right: 24px;
+    background: #FF7A1A; color: #0B1626;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 14px;
+    border-radius: 0 0 10px 10px;
+  }
+  .pkg-card__header { padding: 28px 28px 20px; border-bottom: 1px solid #2c4263; }
+  .pkg-card__header--silver { background: #0f1d30; }
+  .pkg-card__header--gold   { background: linear-gradient(135deg, #1a1200 0%, #0f1d30 100%); }
+  .pkg-card__tier {
+    display: block; font-size: 28px; font-weight: 800; letter-spacing: 0.04em;
+  }
+  .pkg-card__header--silver .pkg-card__tier { color: #9fb0c8; }
+  .pkg-card__header--gold   .pkg-card__tier { color: #FFB800; }
+  .pkg-card__tagline { font-size: 13px; color: #9fb0c8; margin-top: 4px; display: block; }
+  .pkg-card__features { padding: 20px 28px; border-bottom: 1px solid #2c4263; flex: 1; }
+  .pkg-card__prices { padding: 0 28px; }
+  .pkg-price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(44,66,99,0.5); font-size: 14px;
+  }
+  .pkg-price-row:last-child { border-bottom: none; }
+  .pkg-price-row__size  { color: #9fb0c8; font-weight: 500; }
+  .pkg-price-row__price { color: #FF7A1A; font-weight: 800; }
+
+  .disclaimer { font-size: 12px; color: #9fb0c8; margin-top: 16px; font-style: italic; text-align: center; }
+
+  /* Office tiers */
+  .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 28px; }
+  .office-card { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; position: relative; }
+  .office-card--hi { border-color: #FF7A1A; }
+  .office-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #FF7A1A; color: #0B1626; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 99px; white-space: nowrap; }
+  .office-card__head { display: flex; flex-direction: column; gap: 3px; }
+  .office-card__name { font-size: 22px; font-weight: 800; color: #fff; }
+  .office-card__size { font-size: 13px; color: #9fb0c8; }
+  .office-card__desc { font-size: 14px; color: #9fb0c8; line-height: 1.6; }
+  .office-card__price { font-size: 20px; font-weight: 800; color: #FF7A1A; padding: 12px 0; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+
+  /* Add-ons table */
   .extras-table { border: 1px solid #2c4263; border-radius: 14px; overflow: hidden; margin-top: 24px; }
   .extras-head { display: grid; grid-template-columns: 1fr auto; padding: 12px 20px; background: #0f1d30; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #9fb0c8; gap: 16px; }
   .extras-row { display: grid; grid-template-columns: 1fr auto; padding: 14px 20px; border-top: 1px solid #2c4263; gap: 16px; background: #111f35; transition: background 0.15s; }
@@ -116,13 +325,15 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   .extras-row__s { font-size: 14px; font-weight: 500; color: #cdd8e8; }
   .extras-row__p { font-size: 14px; font-weight: 700; color: #FF7A1A; white-space: nowrap; }
 
-  /* -- Responsive -- */
-  @media (max-width: 600px) {
-    .tier-grid { grid-template-columns: 1fr; }
-    .tier-card { padding: 22px; }
-  }
-  @media (max-width: 380px) {
+  /* Responsive */
+  @media (max-width: 640px) {
     .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .pkg-card__header { padding: 20px 20px 16px; }
+    .pkg-card__features { padding: 16px 20px; }
+    .pkg-card__prices { padding: 0 20px; }
+    .office-card { padding: 22px; }
     .extras-row, .extras-head { padding-left: 14px; padding-right: 14px; }
+    .extras-row { grid-template-columns: 1fr; gap: 4px; }
+    .extras-row__p { font-size: 13px; }
   }
 </style>

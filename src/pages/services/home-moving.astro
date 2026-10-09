@@ -3,36 +3,158 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTABanner from '../../components/CTABanner.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
+
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a home moving quote in Kampala. Can you help?');
+
+const silverFeatures = [
+  'Delivery up to 20km distance',
+  'Basic equipment',
+  'Recommendable packaging',
+  'Temporary storage',
+  'Basic furniture disassembly & reassembly',
+  'Chattel loading & offloading',
+  'Max 8 hours duration',
+];
+
+const goldFeatures = [
+  'Delivery up to 40km distance',
+  'Recommendable packaging',
+  'Temporary storage',
+  'Basic furniture disassembly & reassembly',
+  'Chattel loading & offloading',
+  'Max 15 hours duration',
+  'Basic equipment',
+  'Specialised packing — white glove treatment',
+  'High-end storage options',
+  'Concierge services',
+];
+
+const silverPrices = [
+  { size: 'Studio room', price: 'UGX 435,500' },
+  { size: '1 bedroom',   price: 'UGX 539,000' },
+  { size: '2 bedroom',   price: 'UGX 643,000' },
+  { size: '3 bedroom',   price: 'UGX 780,000' },
+  { size: '4 bedroom',   price: 'UGX 1,040,000' },
+  { size: '5 bedroom',   price: 'UGX 1,300,000' },
+];
+
+const goldPrices = [
+  { size: 'Studio room', price: 'UGX 565,500' },
+  { size: '1 bedroom',   price: 'UGX 700,700' },
+  { size: '2 bedroom',   price: 'UGX 835,900' },
+  { size: '3 bedroom',   price: 'UGX 1,014,000' },
+  { size: '4 bedroom',   price: 'UGX 1,352,000' },
+  { size: '5 bedroom',   price: 'UGX 1,690,000' },
+];
+
+const timeline = [
+  { time: '7:00 am', label: 'Crew arrives', desc: 'Our team does a walkthrough with you and confirms the move plan.' },
+  { time: '7:30 am', label: 'Packing begins', desc: 'Room by room — we bring all materials. Fragile items get white glove treatment.' },
+  { time: '10:00 am', label: 'Furniture disassembled', desc: 'Beds, wardrobes and large pieces are carefully taken apart and wrapped.' },
+  { time: '11:00 am', label: 'Loading', desc: 'Everything is loaded onto our covered truck, secured for transport.' },
+  { time: '1:00 pm', label: 'Transport & delivery', desc: 'Your belongings are driven safely to the new address.' },
+  { time: '2:00 pm', label: 'Unloading & setup', desc: 'We unload, place furniture per your instructions and reassemble everything.' },
+  { time: '4:00 pm', label: 'Done', desc: 'You walk into a fully set-up home. All boxes in the right rooms.' },
+];
+
+const included = [
+  'Free on-site survey',
+  'All packing materials supplied',
+  'Furniture disassembly & reassembly',
+  'Fragile item wrapping & protection',
+  'Covered transport',
+  'Unloading & placement at new address',
+  'Goods-in-transit insurance',
+  'Clean loading & offloading',
+];
+
+const areas = [
+  { label: 'Ntinda',          href: '/service-areas/kampala/ntinda' },
+  { label: 'Kololo',          href: '/service-areas/kampala/kololo' },
+  { label: 'Muyenga',         href: '/service-areas/kampala/muyenga' },
+  { label: 'Bugolobi',        href: '/service-areas/kampala/bugolobi' },
+  { label: 'Naguru',          href: '/service-areas/kampala/naguru' },
+  { label: 'Nakasero',        href: '/service-areas/kampala/nakasero' },
+  { label: 'Bukoto',          href: '/service-areas/kampala/bukoto' },
+  { label: 'Kyambogo',        href: '/service-areas/kampala' },
+  { label: 'Nalya',           href: '/service-areas/kampala' },
+  { label: 'Industrial Area', href: '/service-areas/kampala/industrial-area' },
+  { label: 'Entebbe',         href: '/service-areas/kampala' },
+  { label: 'Mukono / Wakiso', href: '/service-areas/kampala' },
+];
+
+const faqs = [
+  { q: 'How much does it cost to move a house in Kampala?', a: 'Our Silver package starts from UGX 435,500 for a studio room and goes up to UGX 1,300,000 for a 5-bedroom home. The Gold package starts from UGX 565,500 (studio) to UGX 1,690,000 (5 bedroom). All prices are subject to a free on-site survey. Disclaimer: all rates are subject to inspection.' },
+  { q: 'What is the difference between Silver and Gold?', a: 'Silver covers moves up to 20km, takes up to 8 hours, and includes standard packing and basic equipment. Gold covers moves up to 40km, allows up to 15 hours, and adds white glove specialised packing, high-end storage options and concierge services.' },
+  { q: 'Do you move on weekends?', a: 'Yes. Weekend moves are available at no extra charge — same fixed price any day of the week. Book at least 2–3 weeks ahead for month-end weekends when demand is highest.' },
+  { q: 'How far in advance should I book?', a: 'For weekday moves, 1 week is usually enough. For weekend moves, especially at month-end, we recommend 2–3 weeks in advance.' },
+  { q: 'Do you provide packing materials?', a: 'Yes — all packing materials are included in both packages. Bubble wrap, moving blankets, stretch wrap, cardboard boxes and tape are all supplied by our crew.' },
+  { q: 'Do you disassemble and reassemble furniture?', a: 'Yes. Beds, wardrobes, shelving units and any furniture that needs to be taken apart is disassembled before the move and reassembled at the new address. This is included in both packages.' },
+  { q: 'Can you move just one or two items?', a: 'Yes. For single-item or partial moves, contact us on WhatsApp for a custom quote. A minimum charge applies.' },
+  { q: 'Do you move to areas outside Kampala?', a: 'Yes. We serve Entebbe, Jinja, Mukono, Wakiso and other nearby areas. Distance beyond 20km (Silver) or 40km (Gold) may attract an additional fee — we will confirm this in your free survey.' },
+  { q: 'What if something gets damaged?', a: 'All moves include goods-in-transit insurance. If any item is damaged during the move, we handle the claim. Our crew is trained to handle your belongings with care from start to finish.' },
+  { q: 'What time do you start in the morning?', a: 'Our crew typically arrives from 7:00am. We can discuss your preferred start time when you book.' },
+];
 ---
-<!-- KW research: Primary = home movers kampala
-     Secondary: house movers kampala, residential movers uganda, house shifting services kampala, affordable movers kampala
-     Title (exact): Home Movers in Kampala | Trusted House Shifting Services
-     Meta (exact, 155 chars): Reliable home movers in Kampala. Safe packing, transport & setup for your household. Affordable, professional & fully insured. Get your free moving quote today.
-     H1 (exact): Home Movers & House Shifting Services in Kampala -->
+<!-- SEO: Primary = home movers kampala / house shifting kampala
+     Secondary: house movers kampala, residential movers uganda, house shifting services kampala, affordable movers kampala, apartment movers kampala
+     Title: Home Movers Kampala | House Shifting from UGX 435,500
+     Meta: Trusted home movers in Kampala. Silver & Gold packages for house shifting, apartment moves and residential relocation. Fixed price, fully insured, weekend available.
+-->
 <BaseLayout
-  title="Home Movers in Kampala | Trusted House Shifting Services"
-  description="Reliable home movers in Kampala. Safe packing, transport & setup for your household. Affordable, professional & fully insured. Get your free moving quote today."
+  title="Home Movers Kampala | House Shifting from UGX 435,500"
+  description="Trusted home movers in Kampala. Silver & Gold packages for house shifting, apartment moves and residential relocation. Fixed price, fully insured, weekend available."
 >
-  <PageHero eyebrow="Home Moving" title="Home Movers &amp; House Shifting Services in Kampala" subtitle="Reliable, affordable home movers in Kampala - safe packing, careful transport and full setup. The same professional standard we apply to corporate clients, for your household." image="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=80&auto=format&fit=crop" imageAlt="Professional home movers carefully packing household furniture in Kampala Uganda" crumbs={[{label:'Home',href:'/'},{label:'Services',href:'/services'},{label:'Home Moving'}]} cta={{label:'Get a home moving quote',href:'https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F'}} />
+  <PageHero
+    eyebrow="Home Moving"
+    title="Home Movers &amp; House Shifting in Kampala"
+    subtitle="Two packages to suit every budget — from studio apartments to large family homes. Fixed price, fully insured, available every day of the week."
+    image="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=80&auto=format&fit=crop"
+    imageAlt="Professional home movers carefully packing household furniture in Kampala Uganda"
+    crumbs={[{label:'Home',href:'/'},{label:'Services',href:'/services'},{label:'Home Moving'}]}
+    cta={{label:'Get a home moving quote', href: waUrl}}
+  />
+
   <div class="w page-body">
-    <div class="two-col">
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+      {[
+        { icon:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', label:'Goods-in-transit insurance included' },
+        { icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label:'Trained & background-checked crew' },
+        { icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Fixed price — no surprise charges' },
+        { icon:'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z', label:'Weekends & month-end available' },
+      ].map(t => (
+        <div class="trust-bar__item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={t.icon}/></svg>
+          <span>{t.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- INTRO -->
+    <div class="two-col" style="margin-bottom:72px">
       <div>
         <span class="eyebrow">House shifting in Kampala</span>
         <h2 class="h2">Your home, moved with care.</h2>
         <div class="prose">
-          <p>Most home moves in Kampala are done with hired pickups and untrained labour - furniture scratched, items lost, fragile things broken. Quick Shift brings corporate-grade professionalism to residential moves.</p>
-          <p>We pack everything properly, wrap fragile items, disassemble beds and wardrobes and reassemble everything at the new address. You walk into a properly set-up home.</p>
-          <p>We serve all Kampala districts for home moves - Ntinda, Kololo, Bugolobi, Naguru, Muyenga, Bukoto, Nalya, Kyambogo and more.</p>
+          <p>Most home moves in Kampala are done with hired pickups and untrained labour — furniture gets scratched, items go missing, fragile things break. Quick Shift brings the same professional standard we apply to corporate relocations to your household move.</p>
+          <p>We pack everything properly using quality materials, wrap fragile items individually, disassemble beds and wardrobes, transport everything on our covered truck and reassemble at the new address. You walk into a home that is ready to live in.</p>
+          <p>We serve all Kampala districts — Ntinda, Kololo, Bugolobi, Naguru, Muyenga, Bukoto, Nalya, Kyambogo and more — as well as Entebbe, Jinja, Mukono and Wakiso.</p>
         </div>
-        <a href="https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg" style="margin-top:28px">Get a home moving quote</a>
+        <a href={waUrl} class="btn btn--primary btn--lg" style="margin-top:28px" target="_blank" rel="noopener noreferrer">Get a home moving quote</a>
       </div>
-      <div class="side-photo"><img src="https://images.unsplash.com/photo-1558618047-f5e2e69d5ec3?w=800&q=80&auto=format&fit=crop" alt="Home movers carefully packing household items in Kampala" class="img-cover" loading="lazy" width="800" height="600" /></div>
+      <div class="side-photo">
+        <img src="https://images.unsplash.com/photo-1558618047-f5e2e69d5ec3?w=800&q=80&auto=format&fit=crop" alt="Home movers carefully packing household items in Kampala" class="img-cover" loading="lazy" width="800" height="600" />
+      </div>
     </div>
-    <section style="margin-top:72px">
+
+    <!-- WHAT'S INCLUDED -->
+    <section>
       <span class="eyebrow">What's included</span>
       <h2 class="h2">Everything in one price.</h2>
       <div class="inc-grid">
-        {['Free on-site survey','Professional packing & all materials','Furniture disassembly & reassembly','Fragile item handling','Covered transport','Setup & placement at new address','Goods-in-transit insurance','Clean loading & unloading'].map(i => (
+        {included.map(i => (
           <div class="inc-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             <span>{i}</span>
@@ -40,31 +162,322 @@ import WhatsAppButton from '../../components/WhatsAppButton.astro';
         ))}
       </div>
     </section>
-    <section style="margin-top:72px;max-width:760px">
-      <span class="eyebrow">FAQs</span>
-      <h2 class="h2">Home moving questions</h2>
-      {[
-        {q:'How much does it cost to move a house in Kampala?',a:'A small apartment (1�2 bedrooms) starts from UGX 600,000. A medium house (3 bedrooms) from UGX 1,200,000. Large homes from UGX 2,000,000. All prices fixed after free survey.'},
-        {q:'How far in advance should I book?',a:'Weekday moves: 1 week is usually enough. Weekend moves: 2�3 weeks ahead, especially at month-end when demand is highest.'},
-        {q:'Do you serve areas outside Kampala?',a:'Yes. We move households to and from Entebbe, Jinja, Mukono, Wakiso and other nearby areas. Distance pricing applies - contact us for a quote.'},
-      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+
+    <!-- PRICING PACKAGES -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">Service packages</span>
+      <h2 class="h2">Choose the package that fits your move.</h2>
+      <p class="lead" style="font-size:16px;margin-bottom:36px">Two clear packages. No hidden fees. All rates are subject to a free on-site inspection. <a href="/pricing" style="color:#FF7A1A">See full pricing →</a></p>
+
+      <div class="pkg-grid">
+
+        <!-- SILVER -->
+        <div class="pkg-card">
+          <div class="pkg-card__header pkg-card__header--silver">
+            <span class="pkg-card__tier">SILVER</span>
+            <span class="pkg-card__tagline">Up to 20km · Max 8 hours</span>
+          </div>
+          <div class="pkg-card__features">
+            <ul class="check-list">
+              {silverFeatures.map(f => <li>{f}</li>)}
+            </ul>
+          </div>
+          <div class="pkg-card__prices">
+            {silverPrices.map(p => (
+              <div class="pkg-price-row">
+                <span class="pkg-price-row__size">{p.size}</span>
+                <span class="pkg-price-row__price">{p.price}</span>
+              </div>
+            ))}
+          </div>
+          <a href={waUrl} class="btn btn--outline" style="width:100%;justify-content:center;margin-top:20px" target="_blank" rel="noopener noreferrer">Get Silver quote</a>
+        </div>
+
+        <!-- GOLD -->
+        <div class="pkg-card pkg-card--gold">
+          <div class="pkg-card__badge">Most popular</div>
+          <div class="pkg-card__header pkg-card__header--gold">
+            <span class="pkg-card__tier">GOLD</span>
+            <span class="pkg-card__tagline">Up to 40km · Max 15 hours</span>
+          </div>
+          <div class="pkg-card__features">
+            <ul class="check-list">
+              {goldFeatures.map(f => <li>{f}</li>)}
+            </ul>
+          </div>
+          <div class="pkg-card__prices">
+            {goldPrices.map(p => (
+              <div class="pkg-price-row">
+                <span class="pkg-price-row__size">{p.size}</span>
+                <span class="pkg-price-row__price">{p.price}</span>
+              </div>
+            ))}
+          </div>
+          <a href={waUrl} class="btn btn--primary" style="width:100%;justify-content:center;margin-top:20px" target="_blank" rel="noopener noreferrer">Get Gold quote</a>
+        </div>
+
+      </div>
+      <p class="disclaimer">Disclaimer: All rates are subject to inspection. Terms and conditions apply.</p>
     </section>
+
+    <!-- MOVE DAY TIMELINE -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">What to expect</span>
+      <h2 class="h2">Your move day, hour by hour.</h2>
+      <p class="lead" style="font-size:16px;margin-bottom:36px">No surprises, no stress. Here is exactly what happens from the moment our crew arrives.</p>
+      <div class="timeline">
+        {timeline.map((t, i) => (
+          <div class="tl-item">
+            <div class="tl-left">
+              <span class="tl-time">{t.time}</span>
+              <div class="tl-line" aria-hidden="true"></div>
+            </div>
+            <div class="tl-content">
+              <strong class="tl-label">{t.label}</strong>
+              <p class="tl-desc">{t.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PACKING PROTECTION -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">How we protect your belongings</span>
+      <h2 class="h2">Professional packing, every time.</h2>
+      <div class="prot-grid">
+        {[
+          { title:'Bubble wrap', desc:'All fragile items — glassware, mirrors, electronics — individually wrapped.' },
+          { title:'Moving blankets', desc:'Sofas, headboards and upholstered furniture fully covered to prevent scratching.' },
+          { title:'Stretch wrap', desc:'Mattresses, sofas and wardrobes sealed tight against dust and damage.' },
+          { title:'Labelled boxes', desc:'Every box labelled by room so unloading is fast and nothing ends up in the wrong place.' },
+          { title:'Wardrobe boxes', desc:'Clothes stay on hangers — no folding, no creasing, moved as-is.' },
+          { title:'Hardware bags', desc:'Bolts, screws and fittings from disassembled furniture bagged and taped to the piece.' },
+        ].map(p => (
+          <div class="prot-card">
+            <strong class="prot-card__title">{p.title}</strong>
+            <p class="prot-card__desc">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">What our clients say</span>
+      <h2 class="h2">Real home moves, real people.</h2>
+      <div class="testi-grid">
+        {[
+          { quote: '"Quick Shift moved our 3-bedroom home in Ntinda over a Saturday. The crew arrived at 7am sharp, packed everything carefully and by 4pm our new place in Muyenga was fully set up. Not a single item was scratched."', name: 'Sarah Nakamya', location: 'Ntinda → Muyenga' },
+          { quote: '"I was nervous about moving my apartment alone but the team handled everything. They even reassembled my wardrobe and set up my bed. Highly professional — I would not use anyone else."', name: 'David Otieno', location: 'Kololo, Kampala' },
+          { quote: '"Fixed price, no hidden charges — exactly as quoted. The crew were polite, careful and very fast. Moved my 2-bedroom in under 6 hours."', name: 'Grace Akello', location: 'Bugolobi, Kampala' },
+        ].map(t => (
+          <div class="testi-card">
+            <p class="testi-card__quote">{t.quote}</p>
+            <div class="testi-card__footer">
+              <strong class="testi-card__name">{t.name}</strong>
+              <span class="testi-card__loc">{t.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- AREAS -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">Where we move homes</span>
+      <h2 class="h2">Every Kampala district, plus inter-city.</h2>
+      <p class="lead" style="font-size:16px;margin-bottom:28px">We move homes across every Kampala district and to/from Entebbe, Jinja, Mukono and Wakiso.</p>
+      <div class="areas-pills">
+        {areas.map(a => (
+          <a href={a.href} class="pill">{a.label}</a>
+        ))}
+      </div>
+      <div style="margin-top:20px">
+        <a href="/service-areas/kampala" class="btn btn--outline">View all service areas →</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-top:72px;max-width:780px">
+      <span class="eyebrow">Common questions</span>
+      <h2 class="h2">Home moving questions, answered.</h2>
+      {faqs.map(f => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+      <div style="margin-top:24px">
+        <a href="/faq" class="btn btn--outline">View all FAQs →</a>
+      </div>
+    </section>
+
+    <!-- RELATED SERVICES -->
+    <section style="margin-top:72px">
+      <span class="eyebrow">Also from Quick Shift</span>
+      <h2 class="h2">Other services you might need.</h2>
+      <div class="related-grid">
+        {[
+          { title:'After-Hours Moving', desc:'Move on a Friday evening or weekend with no extra charge.', href:'/services/after-hours-moving' },
+          { title:'Office Relocation', desc:'Full overnight office moves — zero working days lost.', href:'/services/office-relocation' },
+          { title:'Furniture Moving', desc:'Move specific items without a full house move.', href:'/services/office-furniture-moving' },
+        ].map(s => (
+          <a href={s.href} class="related-card">
+            <strong class="related-card__title">{s.title}</strong>
+            <p class="related-card__desc">{s.desc}</p>
+            <span class="related-card__arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
   </div>
-  <CTABanner title="Ready to move home?" subtitle="Professional packing, careful transport and full setup - all in one fixed price." primaryLabel="Get a home moving quote" />
+
+  <CTABanner
+    title="Ready to move home? Get a free quote today."
+    subtitle="WhatsApp us your home size and location — we respond within one hour and give you a fixed price after a free survey."
+    primaryLabel="Get a home moving quote"
+  />
   <WhatsAppButton />
 </BaseLayout>
+
 <style>
-  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .page-body { padding-top: 48px; padding-bottom: 72px; }
+
+  /* Trust bar */
+  .trust-bar {
+    display: flex; flex-wrap: wrap; gap: 12px 24px;
+    padding: 20px 24px; background: #111f35;
+    border: 1px solid #2c4263; border-radius: 14px;
+    margin-bottom: 56px;
+  }
+  .trust-bar__item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: #cdd8e8;
+  }
+
+  /* Intro two-col */
   .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 400px; } }
   .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+
+  /* Included grid */
   .inc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 24px; }
   .inc-item { display: flex; align-items: flex-start; gap: 10px; background: #111f35; border: 1px solid #2c4263; border-radius: 10px; padding: 12px 14px; font-size: 14px; font-weight: 500; color: #cdd8e8; line-height: 1.4; }
 
-  /* -- Responsive -- */
+  /* Package cards */
+  .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .pkg-grid { grid-template-columns: 1fr; } }
+
+  .pkg-card {
+    background: #111f35; border: 1px solid #2c4263;
+    border-radius: 20px; overflow: hidden;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .pkg-card--gold { border-color: #FF7A1A; }
+  .pkg-card__badge {
+    position: absolute; top: -1px; right: 24px;
+    background: #FF7A1A; color: #0B1626;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 14px;
+    border-radius: 0 0 10px 10px;
+  }
+  .pkg-card__header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid #2c4263;
+  }
+  .pkg-card__header--silver { background: #0f1d30; }
+  .pkg-card__header--gold   { background: linear-gradient(135deg, #1a1200 0%, #0f1d30 100%); }
+  .pkg-card__tier {
+    display: block; font-size: 28px; font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .pkg-card__header--silver .pkg-card__tier { color: #9fb0c8; }
+  .pkg-card__header--gold   .pkg-card__tier { color: #FFB800; }
+  .pkg-card__tagline { font-size: 13px; color: #9fb0c8; margin-top: 4px; display: block; }
+
+  .pkg-card__features { padding: 20px 28px; border-bottom: 1px solid #2c4263; flex: 1; }
+
+  .pkg-card__prices { padding: 0 28px; }
+  .pkg-price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(44,66,99,0.5);
+    font-size: 14px;
+  }
+  .pkg-price-row:last-child { border-bottom: none; }
+  .pkg-price-row__size  { color: #9fb0c8; font-weight: 500; }
+  .pkg-price-row__price { color: #FF7A1A; font-weight: 800; }
+
+  .disclaimer {
+    font-size: 12px; color: #9fb0c8; margin-top: 16px;
+    font-style: italic; text-align: center;
+  }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item { display: flex; gap: 20px; }
+  .tl-left {
+    display: flex; flex-direction: column; align-items: center;
+    flex-shrink: 0; width: 80px;
+  }
+  .tl-time {
+    font-size: 12px; font-weight: 800; color: #FF7A1A;
+    white-space: nowrap; padding-top: 2px;
+  }
+  .tl-line {
+    width: 2px; flex: 1; background: #2c4263;
+    margin: 6px 0; min-height: 24px;
+  }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-content {
+    background: #111f35; border: 1px solid #2c4263;
+    border-radius: 12px; padding: 16px 20px;
+    margin-bottom: 10px; flex: 1;
+  }
+  .tl-label { font-size: 15px; font-weight: 800; color: #fff; display: block; margin-bottom: 4px; }
+  .tl-desc  { font-size: 13px; color: #9fb0c8; margin: 0; line-height: 1.5; }
+
+  /* Protection grid */
+  .prot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 28px; }
+  .prot-card { background: #111f35; border: 1px solid #2c4263; border-radius: 12px; padding: 20px; }
+  .prot-card__title { font-size: 15px; font-weight: 800; color: #fff; display: block; margin-bottom: 6px; }
+  .prot-card__desc  { font-size: 13px; color: #9fb0c8; margin: 0; line-height: 1.5; }
+
+  /* Testimonials */
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 28px; }
+  .testi-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .testi-card__quote { font-size: 15px; color: #cdd8e8; line-height: 1.65; font-style: italic; margin: 0; flex: 1; }
+  .testi-card__footer { display: flex; flex-direction: column; gap: 2px; padding-top: 12px; border-top: 1px solid #2c4263; }
+  .testi-card__name { font-weight: 800; font-size: 14px; color: #fff; }
+  .testi-card__loc  { font-size: 12px; color: #9fb0c8; }
+
+  /* Areas */
+  .areas-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* Related */
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 28px; }
+  .related-card {
+    background: #111f35; border: 1px solid #2c4263; border-radius: 14px;
+    padding: 20px; text-decoration: none; display: flex; flex-direction: column; gap: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .related-card:hover { border-color: #FF7A1A; background: #132030; }
+  .related-card__title { font-size: 16px; font-weight: 800; color: #fff; }
+  .related-card__desc  { font-size: 13px; color: #9fb0c8; line-height: 1.5; flex: 1; margin: 0; }
+  .related-card__arrow { font-size: 16px; color: #FF7A1A; font-weight: 700; }
+
+  /* Responsive */
   @media (max-width: 640px) {
-    .page-body { padding-top: 40px; padding-bottom: 48px; }
+    .page-body { padding-top: 32px; padding-bottom: 48px; }
     .two-col { gap: 32px; }
-    .side-photo { height: 280px; }
+    .side-photo { height: 260px; }
+    .trust-bar { gap: 10px 16px; padding: 16px; }
+    .tl-left { width: 64px; }
+    .tl-time { font-size: 11px; }
+    .pkg-card__header { padding: 20px 20px 16px; }
+    .pkg-card__features { padding: 16px 20px; }
+    .pkg-card__prices { padding: 0 20px; }
   }
 </style>
