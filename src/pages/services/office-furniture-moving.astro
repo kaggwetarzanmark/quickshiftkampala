@@ -1,0 +1,63 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = office furniture movers kampala
+     Secondary: office furniture moving, furniture disassembly and reassembly, workstation movers, desk movers kampala
+     Title (exact): Office Furniture Movers Kampala | Disassembly & Reassembly
+     Meta (exact, 155 chars): Professional office furniture movers in Kampala. Expert disassembly, safe transport & reassembly of desks, workstations, and modular furniture. Request a free quote.
+     H1 (exact): Office Furniture Movers in Kampala -->
+<BaseLayout
+  title="Office Furniture Movers Kampala | Disassembly & Reassembly"
+  description="Professional office furniture movers in Kampala. Expert disassembly, safe transport & reassembly of desks, workstations, and modular furniture. Request a free quote."
+>
+  <PageHero eyebrow="Furniture Moving" title="Office Furniture Movers in Kampala" subtitle="Professional office furniture moving - expert disassembly, safe transport and full reassembly of desks, workstations and modular furniture. Every bolt accounted for." image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80&auto=format&fit=crop" imageAlt="Office furniture professionally wrapped and prepared for transport in Kampala" crumbs={[{label:'Home',href:'/'},{label:'Services',href:'/services'},{label:'Furniture Moving'}]} cta={{label:'Get a furniture quote',href:'/get-a-quote'}} />
+  <div class="w page-body">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Every piece protected</span>
+        <h2 class="h2">Every bolt accounted for.</h2>
+        <div class="prose">
+          <p>Cheap movers throw furniture in a truck. We disassemble everything systematically, wrap each component in protective blankets and mark every bag of hardware with the item it came from.</p>
+          <p>At the new location we reassemble everything in position according to your floor plan. Your team arrives to a fully fitted office - not a warehouse of flat-packs.</p>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary btn--lg" style="margin-top:28px">Get a furniture quote</a>
+      </div>
+      <div class="side-photo"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="Professional furniture movers wrapping and labelling office items" class="img-cover" loading="lazy" width="800" height="600" /></div>
+    </div>
+    <section style="margin-top:72px">
+      <span class="eyebrow">What we handle</span>
+      <h2 class="h2">Every type of office furniture.</h2>
+      <div class="g" style="margin-top:8px">
+        {['Open-plan workstations','Executive & director desks','Glass partitions & walls','Reception counters','Boardroom & conference tables','Filing & storage systems'].map(t => (
+          <div class="type-card">
+            <span class="type-card__bar"></span>
+            <strong class="type-card__title">{t}</strong>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="h2">Furniture moving questions</h2>
+      {[
+        {q:'Can you disassemble glass partitions?',a:'Yes. We handle all partition systems including demountable partitions, glass walls and acoustic pods. Reassembly is done to the original configuration or your new floor plan.'},
+        {q:'Do you dispose of furniture we no longer want?',a:'Yes. Usable items are donated to schools and charities in Kampala; the rest is recycled through licensed partners.'},
+        {q:'Can you move a single piece, not a whole office?',a:'Yes. We accept single-item jobs - conference tables, reception counters, heavy storage. Contact us for a quote.'},
+      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+  </div>
+  <CTABanner title="Ready to move your office furniture?" subtitle="Professional disassembly, protective transport and full reassembly in one fixed price." primaryLabel="Get a furniture quote" />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+  .type-card { background: #111f35; border: 1px solid #2c4263; border-radius: 14px; padding: 20px; }
+  .type-card__bar { display: block; width: 32px; height: 3px; background: #FF7A1A; border-radius: 2px; margin-bottom: 12px; }
+  .type-card__title { font-size: 16px; font-weight: 800; color: #fff; }
+</style>

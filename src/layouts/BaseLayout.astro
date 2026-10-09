@@ -1,0 +1,91 @@
+﻿---
+import SEO from '../components/SEO.astro';
+import Schema from '../components/Schema.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const { title, description, image, schema, noindex } = Astro.props;
+
+// ── NAP (Name / Address / Phone) - Update with real details when ready ──
+// Business: Quick Shift Kampala
+// Phone:    [INSERT REAL NUMBER e.g. +256 700 000 000]
+// Email:    [INSERT REAL EMAIL]
+// Address:  [INSERT REAL ADDRESS], Kampala, Uganda
+const bizSchema = {
+  "@context": "https://schema.org",
+  "@type": "MovingCompany",
+  "name": "Quick Shift Kampala",
+  "description": "Professional office movers in Kampala, Uganda. Licensed, insured and trusted by 100+ businesses. Fixed price, overnight moves, zero downtime.",
+  "url": "https://quickshiftkampala.com",
+  "telephone": "+256700000000",        // TODO: replace with real number
+  "email": "info@quickshiftkampala.com", // TODO: replace with real email
+  "image": "https://quickshiftkampala.com/og/home.jpg",
+  "logo": "https://quickshiftkampala.com/favicon.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kampala",         // TODO: replace with real street address
+    "addressLocality": "Kampala",
+    "addressRegion": "Central Region",
+    "addressCountry": "UG"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 0.3476, "longitude": 32.5825 },
+  "areaServed": [
+    "Kampala","Nakasero","Kololo","Ntinda","Bugolobi",
+    "Naguru","Muyenga","Bukoto","Industrial Area","Entebbe","Jinja"
+  ],
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Moving Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Relocation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Relocation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Furniture Moving" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "After-Hours & Weekend Moves" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Decommissioning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Moving" } }
+    ]
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
+  ],
+  "sameAs": [
+    "https://facebook.com/quickshiftkampala",
+    "https://instagram.com/quickshiftkampala",
+    "https://tiktok.com/@quickshiftkampala"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en-UG">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0B1626" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <SEO title={title} description={description} image={image} noindex={noindex} />
+    <Schema schema={bizSchema} />
+    {schema && <Schema schema={schema} />}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

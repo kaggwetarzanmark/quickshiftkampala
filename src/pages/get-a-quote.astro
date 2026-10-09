@@ -1,0 +1,127 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = free moving quote kampala
+     Secondary: get moving estimate, office moving quote, request moving quote uganda, free on-site survey
+     Title (exact): Get a Free Moving Quote | Office Movers Kampala
+     Meta (exact, 155 chars): Request your free, no-obligation moving quote. Tell us about your office or home move in Kampala and we'll provide a transparent estimate within 24 hours.
+     H1: Get a free moving quote. -->
+<BaseLayout
+  title="Get a Free Moving Quote | Office Movers Kampala"
+  description="Request your free, no-obligation moving quote. Tell us about your office or home move in Kampala and we'll provide a transparent estimate within 24 hours."
+>
+  <PageHero eyebrow="Free quote" title="Get a free moving quote." subtitle="Request your free, no-obligation office moving quote. Tell us about your move in Kampala and we'll provide a transparent fixed estimate within 24 hours." crumbs={[{label:'Home',href:'/'},{label:'Get a Quote'}]} />
+  <div class="w page-body">
+    <div class="quote-layout">
+      <!-- Form -->
+      <div class="quote-form-wrap">
+        <h2 class="h2" style="font-size:24px;margin-bottom:24px">Request your free quote</h2>
+        <form name="full-quote" method="POST" action="/thank-you" class="qform" novalidate>
+          <div style="display:none" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" /></div>
+          <div class="qform-row">
+            <div class="qform-field">
+              <label class="form-label" for="q-name">Your name *</label>
+              <input type="text" id="q-name" name="name" class="form-input" placeholder="Jane Nakato" required autocomplete="name" />
+            </div>
+            <div class="qform-field">
+              <label class="form-label" for="q-phone">Phone / WhatsApp *</label>
+              <input type="tel" id="q-phone" name="phone" class="form-input" placeholder="+256 7XX XXX XXX" required autocomplete="tel" />
+            </div>
+          </div>
+          <div class="qform-field">
+            <label class="form-label" for="q-company">Company / Organisation</label>
+            <input type="text" id="q-company" name="company" class="form-input" placeholder="Acme Uganda Ltd" autocomplete="organization" />
+          </div>
+          <div class="qform-field">
+            <label class="form-label" for="q-email">Email address</label>
+            <input type="email" id="q-email" name="email" class="form-input" placeholder="jane@company.ug" autocomplete="email" />
+          </div>
+          <div class="qform-field">
+            <label class="form-label" for="q-type">Type of move *</label>
+            <select id="q-type" name="move_type" class="form-select" required>
+              <option value="" disabled selected>Select move type</option>
+              <option>Office relocation</option>
+              <option>Corporate / multi-branch relocation</option>
+              <option>After-hours / weekend move</option>
+              <option>Furniture moving only</option>
+              <option>Office decommissioning</option>
+              <option>Home / residential move</option>
+              <option>International move</option>
+            </select>
+          </div>
+          <div class="qform-row">
+            <div class="qform-field">
+              <label class="form-label" for="q-from">Moving from *</label>
+              <select id="q-from" name="from_district" class="form-select" required>
+                <option value="" disabled selected>Select district</option>
+                <option>Nakasero</option><option>Kololo</option><option>Ntinda</option><option>Bugolobi</option><option>Naguru</option><option>Muyenga</option><option>Bukoto</option><option>Industrial Area</option><option>Entebbe</option><option>Other</option>
+              </select>
+            </div>
+            <div class="qform-field">
+              <label class="form-label" for="q-to">Moving to *</label>
+              <select id="q-to" name="to_district" class="form-select" required>
+                <option value="" disabled selected>Select district</option>
+                <option>Nakasero</option><option>Kololo</option><option>Ntinda</option><option>Bugolobi</option><option>Naguru</option><option>Muyenga</option><option>Bukoto</option><option>Industrial Area</option><option>Entebbe</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="qform-row">
+            <div class="qform-field">
+              <label class="form-label" for="q-size">Office / team size</label>
+              <select id="q-size" name="office_size" class="form-select">
+                <option value="" disabled selected>Select size</option>
+                <option>1 to 10 staff</option><option>11 to 50 staff</option><option>50+ staff</option><option>Home / residential</option>
+              </select>
+            </div>
+            <div class="qform-field">
+              <label class="form-label" for="q-date">Preferred move date</label>
+              <input type="date" id="q-date" name="move_date" class="form-input" min={new Date().toISOString().split('T')[0]} />
+            </div>
+          </div>
+          <div class="qform-field">
+            <label class="form-label" for="q-notes">Additional details</label>
+            <textarea id="q-notes" name="notes" class="form-textarea" placeholder="Number of floors, specialist equipment, current building name, preferred move time..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send my quote request →</button>
+          <p class="qform-note">We won't share your details. You'll hear from us within one hour.</p>
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="quote-aside">
+        <div class="aside-card">
+          <h3 class="aside-card__title">Why Quick Shift?</h3>
+          <ul class="check-list">
+            {['Licensed & fully insured','Fixed price - no hourly rates','Quote within 24 hours','Overnight & weekend moves','Dedicated project manager','4.9★ Google rating'].map(t => <li>{t}</li>)}
+          </ul>
+        </div>
+        <div class="aside-card aside-card--wa">
+          <p class="aside-wa-title">Prefer to talk?</p>
+          <p class="aside-wa-sub">WhatsApp or call us directly for a quick verbal estimate.</p>
+          <a href="https://wa.me/256700000000" class="btn btn--wa" style="width:100%;justify-content:center;margin-top:14px" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+          <a href="tel:+256700000000" class="btn btn--outline" style="width:100%;justify-content:center;margin-top:10px">Call +256 700 000000</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .quote-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+  @media (min-width: 960px) { .quote-layout { grid-template-columns: 1fr 320px; } }
+  .quote-form-wrap { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 32px; }
+  .qform { display: flex; flex-direction: column; gap: 16px; }
+  .qform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .qform-row { grid-template-columns: 1fr; } }
+  .qform-field { display: flex; flex-direction: column; gap: 6px; }
+  .qform-note { font-size: 12px; color: #9fb0c8; text-align: center; }
+  .quote-aside { display: flex; flex-direction: column; gap: 16px; }
+  .aside-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 22px; }
+  .aside-card--wa { border-color: rgba(37,211,102,0.3); }
+  .aside-card__title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+  .aside-wa-title { font-weight: 800; font-size: 16px; color: #fff; }
+  .aside-wa-sub { font-size: 13px; color: #9fb0c8; margin-top: 4px; line-height: 1.6; }
+</style>

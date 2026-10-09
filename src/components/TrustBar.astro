@@ -1,0 +1,111 @@
+---
+interface Props {
+  variant?: 'stats' | 'logos';
+}
+const { variant = 'stats' } = Astro.props;
+
+const stats = [
+  { value: '100+',  label: 'Businesses moved' },
+  { value: '98%',   label: 'Moves done on time' },
+  { value: '5+',    label: 'Years in Kampala' },
+  { value: '24h',   label: 'Fixed quote turnaround' },
+];
+
+const clients = [
+  'NGOs & INGOs',
+  'Embassies',
+  'Banks & Corporates',
+  'Healthcare',
+  'Tech Companies',
+  'Education',
+];
+---
+
+{variant === 'stats' ? (
+  <div class="trust-stats" aria-label="Key business statistics">
+    {stats.map(s => (
+      <div class="trust-stat">
+        <span class="trust-stat__value">{s.value}</span>
+        <span class="trust-stat__label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+) : (
+  <div class="trust-logos" aria-label="Types of clients we serve">
+    <p class="trust-logos__label">Trusted by</p>
+    <ul class="trust-logos__list" role="list">
+      {clients.map(c => (
+        <li class="trust-logos__item">{c}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  /* Stats variant */
+  .trust-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .trust-stats { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .trust-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    text-align: center;
+  }
+
+  .trust-stat__value {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .trust-stat__label {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.65);
+    font-weight: 500;
+  }
+
+  /* Logos / client types variant */
+  .trust-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .trust-logos__label {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .trust-logos__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .trust-logos__item {
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+</style>

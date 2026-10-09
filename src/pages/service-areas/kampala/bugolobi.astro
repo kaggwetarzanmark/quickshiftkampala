@@ -1,0 +1,60 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CTABanner from '../../../components/CTABanner.astro';
+import WhatsAppButton from '../../../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = movers in bugolobi | Title: Movers in Bugolobi | Professional Relocation -->
+<BaseLayout
+  title="Movers in Bugolobi | Professional Relocation Services"
+  description="Trusted office and home movers in Bugolobi, Kampala. Professional relocation services for corporate offices, NGOs and residential moves. Fixed-price quotes. Free survey."
+>
+  <PageHero
+    eyebrow="Bugolobi, Kampala"
+    title="Movers in Bugolobi"
+    subtitle="Professional office and home movers in Bugolobi - serving modern office parks, corporate HQs and residential areas across the district."
+    image="/images/bugolobi.jpeg"
+    imageAlt="Bugolobi Kampala office district and residential area"
+    crumbs={[{label:'Home',href:'/'},{label:'Areas',href:'/service-areas/kampala'},{label:'Bugolobi'}]}
+    cta={{label:'Get a Bugolobi quote',href:'/get-a-quote'}}
+  />
+  <div class="w page-body">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Bugolobi specialists</span>
+        <h2 class="h2">Modern offices, professional moves.</h2>
+        <div class="prose">
+          <p>Bugolobi is home to modern office parks, media companies, corporate offices and a growing residential population. Its proximity to Nakasero CBD and excellent road access to the Northern Bypass make it one of Kampala's most in-demand business districts.</p>
+          <p>Quick Shift handles <strong>office movers in Bugolobi</strong> and residential moves throughout the area - same fixed-price model, same overnight execution, same professional crew.</p>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary btn--lg" style="margin-top:28px">Get a Bugolobi quote</a>
+      </div>
+      <div class="side-photo">
+        <img src="/images/bugolobi.jpeg" alt="Bugolobi Kampala office and residential district" class="img-cover" loading="lazy" width="800" height="600" />
+      </div>
+    </div>
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="h2">Bugolobi questions</h2>
+      {[
+        {q:'How much does it cost to move an office in Bugolobi?',a:'Small offices (1–10 staff) start from UGX 1,500,000. Bugolobi has good road access so moves here typically come in at the lower end of our range. Exact price confirmed after free survey.'},
+        {q:'Do you do home moves in Bugolobi?',a:'Yes. We move households throughout Bugolobi and surrounding areas - same fixed-price model, same professional crew as our corporate moves.'},
+      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+    <section style="margin-top:48px">
+      <span class="eyebrow">Nearby districts</span>
+      <h2 class="h2">We also serve</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+        {[{l:'Nakasero',h:'/service-areas/kampala/nakasero'},{l:'Ntinda',h:'/service-areas/kampala/ntinda'},{l:'Naguru',h:'/service-areas/kampala/naguru'},{l:'All districts',h:'/service-areas/kampala'}].map(d=><a href={d.h} class="pill">{d.l}</a>)}
+      </div>
+    </section>
+  </div>
+  <CTABanner title="Moving in Bugolobi?" subtitle="Get a fixed price within 24 hours of your free survey." primaryLabel="Get a free survey" />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+</style>

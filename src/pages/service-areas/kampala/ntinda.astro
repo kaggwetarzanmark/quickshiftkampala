@@ -1,0 +1,55 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CTABanner from '../../../components/CTABanner.astro';
+import WhatsAppButton from '../../../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = movers in ntinda
+     Secondary: ntinda office movers, commercial movers ntinda, ntinda relocation, office movers ntinda kampala
+     Title (exact): Movers in Ntinda | Office & Home Moving Services
+     Meta (exact, 154 chars): Top-rated movers in Ntinda, Kampala. Office relocations, home moves and commercial removals across Ntinda and surrounding areas. Fixed-price quotes. Free on-site survey.
+     H1: Movers in Ntinda -->
+<BaseLayout
+  title="Movers in Ntinda | Office & Home Moving Services"
+  description="Top-rated movers in Ntinda, Kampala. Office relocations, home moves and commercial removals across Ntinda and surrounding areas. Fixed-price quotes. Free on-site survey."
+>
+  <PageHero eyebrow="Ntinda, Kampala" title="Movers in Ntinda" subtitle="Office movers and home movers in Ntinda, Kampala - fixed price, licensed and insured. Serving tech companies, NGOs, media firms and residential households across the district." image="/images/ntinda.jpeg" imageAlt="Ntinda Kampala commercial and residential district" crumbs={[{label:'Home',href:'/'},{label:'Areas',href:'/service-areas/kampala'},{label:'Ntinda'}]} cta={{label:'Get an Ntinda quote',href:'/get-a-quote'}} />
+  <div class="w page-body">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Ntinda specialists</span>
+        <h2 class="h2">Ntinda is growing. So are its office moves.</h2>
+        <div class="prose">
+          <p>Ntinda has transformed from a quiet residential suburb into one of Kampala's most active commercial zones. Tech startups, media companies and NGO regional offices make this one of our busiest service areas for <strong>commercial movers in Ntinda</strong>.</p>
+          <p>Office moves in Ntinda typically involve Grade B office buildings and shared office parks. Access is generally easier than the CBD - wider roads, more parking - but still requires professional coordination to execute overnight. We are also trusted <strong>home movers in Ntinda</strong>, serving the district's growing residential population.</p>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary btn--lg" style="margin-top:28px">Get an Ntinda quote</a>
+      </div>
+      <div class="side-photo"><img src="/images/ntinda.jpeg" alt="Professional movers working in an Ntinda office building Kampala" class="img-cover" loading="lazy" width="800" height="600" /></div>
+    </div>
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="h2">Ntinda questions</h2>
+      {[
+        {q:'How much does it cost to move an office in Ntinda?',a:'Small offices start from UGX 1,500,000. Ntinda moves are generally straightforward due to good road access, so quotes often come in at the lower end of our range. Exact price after free survey.'},
+        {q:'Do you also do home moves in Ntinda?',a:'Yes. We move both offices and households throughout Ntinda and surrounding suburbs - Kiwatule, Kyambogo, Kireka. Same fixed-price model, same professional crew.'},
+        {q:'Can you move specialist equipment like broadcast gear?',a:'Yes. We have experience moving TV broadcast equipment, studio furniture and server racks for media companies in Ntinda.'},
+      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+    <section style="margin-top:48px">
+      <span class="eyebrow">Nearby districts</span>
+      <h2 class="h2">We also serve</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+        {[{l:'Bugolobi',h:'/service-areas/kampala/bugolobi'},{l:'Naguru',h:'/service-areas/kampala/naguru'},{l:'Kololo',h:'/service-areas/kampala/kololo'},{l:'All districts',h:'/service-areas/kampala'}].map(d=><a href={d.h} class="pill">{d.l}</a>)}
+      </div>
+    </section>
+  </div>
+  <CTABanner title="Moving your Ntinda office?" subtitle="Get a fixed price within 24 hours of your free survey. Most Ntinda moves complete overnight in a single session." primaryLabel="Get a free survey" />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+</style>

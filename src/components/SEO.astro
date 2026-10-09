@@ -1,0 +1,57 @@
+﻿---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/og/home.jpg',
+  canonicalURL = Astro.url.href,
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+// Site name used in OG tags - keyword research: "Quick Shift Kampala - Uganda's Trusted Moving Company"
+const siteName = 'Quick Shift Kampala - Uganda\'s Trusted Moving Company';
+// Don't double-append if the title already contains the brand
+const fullTitle = title.includes('Quick Shift Kampala') ? title : `${title} | Quick Shift Kampala`;
+const ogImageURL = new URL(image, Astro.site ?? 'https://quickshiftkampala.com');
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+{noindex
+  ? <meta name="robots" content="noindex, nofollow" />
+  : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_UG" />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+<meta name="twitter:site" content="@quickshiftkla" />
+
+<!-- Verification (add your codes here) -->
+<!-- <meta name="google-site-verification" content="YOUR_GOOGLE_CODE" /> -->
+<!-- <meta name="msvalidate.01" content="YOUR_BING_CODE" /> -->

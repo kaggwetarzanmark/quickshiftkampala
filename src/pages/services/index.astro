@@ -1,0 +1,49 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+
+const services = [
+  {n:'01',title:'Office Relocation',      desc:'Full overnight moves - furniture, IT and files packed and set up before your team arrives.',href:'/services/office-relocation'},
+  {n:'02',title:'Corporate Relocation',   desc:'Multi-branch moves with a dedicated senior project manager from survey to opening day.',href:'/services/corporate-relocation'},
+  {n:'03',title:'After-Hours Moving',     desc:'We work nights and weekends. No downtime, no overtime premium - just a fixed price.',href:'/services/after-hours-moving'},
+  {n:'04',title:'Furniture Moving',       desc:'Expert disassembly, protective wrapping and full reassembly. Every bolt accounted for.',href:'/services/office-furniture-moving'},
+  {n:'05',title:'Office Decommissioning', desc:'End-of-lease clearance, responsible disposal and broom-clean handback to your landlord.',href:'/services/office-decommissioning'},
+  {n:'06',title:'Home Moving',            desc:'Corporate-grade professionalism for your residential move across Kampala.',href:'/services/home-moving'},
+];
+---
+<!-- KW research: hub page for all services
+     Primary: office movers kampala / moving services kampala
+     Title: Moving Services in Kampala | Quick Shift - Office Movers Uganda
+     Meta (155 chars): Professional office and home moving services in Kampala, Uganda. Office relocation, corporate moves, after-hours moving and decommissioning. Licensed & insured. -->
+<BaseLayout
+  title="Moving Services in Kampala | Quick Shift - Office Movers Uganda"
+  description="Professional office and home moving services in Kampala, Uganda. Office relocation, corporate moves, after-hours moving and decommissioning. Licensed & insured."
+>
+  <PageHero eyebrow="Our services" title="One crew for every kind of move." subtitle="From a single office floor to a multi-branch corporate relocation - we plan and execute every move so your business keeps running." crumbs={[{label:'Home',href:'/'},{label:'Services'}]} />
+  <div class="w page-body">
+    <div class="svc-grid">
+      {services.map(s => (
+        <a href={s.href} class="svc-card">
+          <span class="svc-card__num">{s.n}</span>
+          <strong class="svc-card__title">{s.title}</strong>
+          <p class="svc-card__desc">{s.desc}</p>
+          <span class="svc-card__arrow">Learn more →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+  <CTABanner />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .svc-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 26px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s, background 0.2s; }
+  .svc-card:hover { border-color: #FF7A1A; background: #132030; color: #fff; }
+  .svc-card__num   { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #FF7A1A; }
+  .svc-card__title { font-size: 20px; font-weight: 800; color: #fff; }
+  .svc-card__desc  { font-size: 14px; color: #9fb0c8; line-height: 1.6; flex: 1; }
+  .svc-card__arrow { font-size: 13px; color: #FF7A1A; font-weight: 700; }
+</style>

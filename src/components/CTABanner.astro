@@ -1,0 +1,80 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  whatsappLabel?: string;
+}
+const {
+  title        = 'Ready to move? Get a free quote today.',
+  subtitle     = 'We visit, measure and give you a fixed price within 24 hours. No obligation.',
+  primaryLabel = 'Get a free quote',
+  primaryHref  = '/get-a-quote',
+  whatsappLabel = 'WhatsApp us',
+} = Astro.props;
+
+const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent('Hi! I need a free quote for office relocation.');
+---
+
+<section class="cta-band" aria-label="Call to action">
+  <div class="cta-band__inner w">
+    <div class="cta-band__text">
+      <h2 class="cta-band__title">{title}</h2>
+      {subtitle && <p class="cta-band__sub">{subtitle}</p>}
+    </div>
+    <div class="cta-band__actions">
+      <a href={primaryHref} class="btn btn--primary btn--lg">{primaryLabel}</a>
+      <a href={waUrl} class="btn btn--wa btn--lg" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
+        {whatsappLabel}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background: linear-gradient(135deg, #111f35 0%, #0f1d30 100%);
+    border-top: 1px solid #2c4263;
+    border-bottom: 1px solid #2c4263;
+    padding: 64px 0;
+    margin-top: 72px;
+  }
+
+  .cta-band__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .cta-band__text { flex: 1; min-width: 260px; }
+
+  .cta-band__title {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .cta-band__sub {
+    font-size: 16px;
+    color: #9fb0c8;
+    line-height: 1.6;
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .cta-band__actions { width: 100%; }
+    .cta-band__actions .btn { flex: 1; min-width: 130px; }
+  }
+</style>

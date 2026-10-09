@@ -1,0 +1,117 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = contact movers kampala
+     Secondary: moving company phone number, moving company address kampala, call movers, whatsapp movers kampala
+     Title (exact): Contact Us | Quick Shift Kampala - Office Movers in Kampala
+     Meta (exact, 155 chars): Get in touch with Quick Shift Kampala. Call, WhatsApp, or visit our Kampala office. Available Mon-Sat for office and home moving consultations. We respond within 1 hour.
+     H1: Get in touch. -->
+<BaseLayout
+  title="Contact Us | Quick Shift Kampala - Office Movers in Kampala"
+  description="Get in touch with Quick Shift Kampala. Call, WhatsApp, or visit our Kampala office. Available Mon-Sat for office and home moving consultations. We respond within 1 hour."
+>
+  <PageHero eyebrow="Contact" title="Get in touch." subtitle="Call, WhatsApp or use the contact form - we respond within one hour. Available Mon–Sat for office and home moving consultations in Kampala." crumbs={[{label:'Home',href:'/'},{label:'Contact'}]} />
+  <div class="w page-body">
+    <div class="contact-layout">
+      <!-- Info -->
+      <aside class="contact-info">
+        <h2 class="h2" style="font-size:22px;margin-bottom:24px">Contact details</h2>
+        {[
+          {icon:'M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z', label:'Phone', val:'+256 700 000000', href:'tel:+256700000000'},
+          {icon:'M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5', label:'Email', val:'info@quickshiftkampala.com', href:'mailto:info@quickshiftkampala.com'},
+          {icon:'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z', label:'Address', val:'Plot 12, Kampala Road, Kampala'},
+        ].map(c => (
+          <div class="contact-detail">
+            <div class="contact-detail__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d={c.icon}/></svg>
+            </div>
+            <div>
+              <span class="contact-detail__label">{c.label}</span>
+              {c.href
+                ? <a href={c.href} class="contact-detail__val">{c.val}</a>
+                : <span class="contact-detail__val">{c.val}</span>
+              }
+            </div>
+          </div>
+        ))}
+
+        <div class="hours-block">
+          <h3 class="hours-block__title">Business hours</h3>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
+              <tr><td>Saturday</td><td>8:00 am – 2:00 pm</td></tr>
+              <tr><td>Sunday</td><td>Emergency calls only</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:12px;color:#9fb0c8;margin-top:10px;font-style:italic">Moving crews operate 24/7 including nights & weekends.</p>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <h2 class="h2" style="font-size:22px;margin-bottom:6px">Send us a message</h2>
+        <p style="font-size:14px;color:#9fb0c8;margin-bottom:24px">We'll respond within one hour during business hours.</p>
+        <form name="contact" method="POST" action="/thank-you" class="cform" novalidate>
+          <div style="display:none" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" /></div>
+          <div class="cform-row">
+            <div class="cform-field">
+              <label class="form-label" for="c-name">Name *</label>
+              <input type="text" id="c-name" name="name" class="form-input" placeholder="Jane Nakato" required autocomplete="name" />
+            </div>
+            <div class="cform-field">
+              <label class="form-label" for="c-phone">Phone / WhatsApp *</label>
+              <input type="tel" id="c-phone" name="phone" class="form-input" placeholder="+256 7XX XXX XXX" required autocomplete="tel" />
+            </div>
+          </div>
+          <div class="cform-field">
+            <label class="form-label" for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" class="form-input" placeholder="jane@company.ug" autocomplete="email" />
+          </div>
+          <div class="cform-field">
+            <label class="form-label" for="c-subject">Subject *</label>
+            <select id="c-subject" name="subject" class="form-select" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option>Office relocation quote</option>
+              <option>Home moving quote</option>
+              <option>Decommissioning enquiry</option>
+              <option>After-hours moving</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div class="cform-field">
+            <label class="form-label" for="c-msg">Message *</label>
+            <textarea id="c-msg" name="message" class="form-textarea" rows="5" placeholder="Tell us about your move..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .contact-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+  @media (min-width: 900px) { .contact-layout { grid-template-columns: 320px 1fr; } }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-detail { display: flex; gap: 14px; align-items: flex-start; background: #111f35; border: 1px solid #2c4263; border-radius: 12px; padding: 16px; }
+  .contact-detail__icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,122,26,0.1); border-radius: 8px; color: #FF7A1A; flex-shrink: 0; }
+  .contact-detail__label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #9fb0c8; margin-bottom: 3px; }
+  .contact-detail__val { font-size: 15px; font-weight: 600; color: #fff; text-decoration: none; display: block; transition: color 0.15s; }
+  a.contact-detail__val:hover { color: #FF7A1A; }
+  .hours-block { background: #111f35; border: 1px solid #2c4263; border-radius: 12px; padding: 16px; }
+  .hours-block__title { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .hours-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .hours-table tr { border-bottom: 1px solid #2c4263; }
+  .hours-table tr:last-child { border-bottom: none; }
+  .hours-table td { padding: 8px 0; color: #9fb0c8; }
+  .hours-table td:last-child { font-weight: 700; color: #cdd8e8; text-align: right; }
+  .contact-form-wrap { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 32px; }
+  .cform { display: flex; flex-direction: column; gap: 16px; }
+  .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .cform-row { grid-template-columns: 1fr; } }
+  .cform-field { display: flex; flex-direction: column; gap: 6px; }
+</style>

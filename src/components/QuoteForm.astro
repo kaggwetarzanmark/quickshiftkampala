@@ -1,0 +1,159 @@
+﻿---
+// Hero inline quote form - matches the mockup's "Get my quote" widget
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<form
+  class={`quote-form ${compact ? 'quote-form--compact' : ''}`}
+  name="quote-request"
+  method="POST"
+  action="/thank-you"
+  aria-label="Request a moving quote"
+  novalidate
+>
+  <!-- Honeypot anti-spam -->
+  <div style="display:none" aria-hidden="true">
+    <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <div class="quote-form__grid">
+    <!-- From district -->
+    <div class="form-group">
+      <label for="qf-from" class="form-label">Moving from</label>
+      <select id="qf-from" name="from_district" class="form-select" required aria-required="true">
+        <option value="" disabled selected>District</option>
+        <option value="nakasero">Nakasero</option>
+        <option value="kololo">Kololo</option>
+        <option value="ntinda">Ntinda</option>
+        <option value="bugolobi">Bugolobi</option>
+        <option value="naguru">Naguru</option>
+        <option value="muyenga">Muyenga</option>
+        <option value="bukoto">Bukoto</option>
+        <option value="industrial-area">Industrial Area</option>
+        <option value="other">Other / Outside Kampala</option>
+      </select>
+    </div>
+
+    <!-- To district -->
+    <div class="form-group">
+      <label for="qf-to" class="form-label">Moving to</label>
+      <select id="qf-to" name="to_district" class="form-select" required aria-required="true">
+        <option value="" disabled selected>District</option>
+        <option value="nakasero">Nakasero</option>
+        <option value="kololo">Kololo</option>
+        <option value="ntinda">Ntinda</option>
+        <option value="bugolobi">Bugolobi</option>
+        <option value="naguru">Naguru</option>
+        <option value="muyenga">Muyenga</option>
+        <option value="bukoto">Bukoto</option>
+        <option value="industrial-area">Industrial Area</option>
+        <option value="other">Other / Outside Kampala</option>
+      </select>
+    </div>
+
+    <!-- Office size -->
+    <div class="form-group">
+      <label for="qf-size" class="form-label">Office size</label>
+      <select id="qf-size" name="office_size" class="form-select" required aria-required="true">
+        <option value="" disabled selected>Select size</option>
+        <option value="1-10">1 to 10 staff</option>
+        <option value="11-50">11 to 50 staff</option>
+        <option value="50+">50+ staff</option>
+      </select>
+    </div>
+
+    <!-- Move date -->
+    <div class="form-group">
+      <label for="qf-date" class="form-label">Move date</label>
+      <input
+        type="date"
+        id="qf-date"
+        name="move_date"
+        class="form-input"
+        min={new Date().toISOString().split('T')[0]}
+        aria-label="Preferred move date"
+      />
+    </div>
+  </div>
+
+  <!-- Name & phone (shown in full form, hidden in compact) -->
+  {!compact && (
+    <div class="quote-form__grid quote-form__contact">
+      <div class="form-group">
+        <label for="qf-name" class="form-label">Your name</label>
+        <input
+          type="text"
+          id="qf-name"
+          name="name"
+          class="form-input"
+          placeholder="Jane Nakato"
+          required
+          aria-required="true"
+          autocomplete="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="qf-phone" class="form-label">Phone / WhatsApp</label>
+        <input
+          type="tel"
+          id="qf-phone"
+          name="phone"
+          class="form-input"
+          placeholder="+256 7XX XXX XXX"
+          required
+          aria-required="true"
+          autocomplete="tel"
+        />
+      </div>
+    </div>
+  )}
+
+  <button type="submit" class="btn btn--primary btn--lg quote-form__submit">
+    Get my quote
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </button>
+</form>
+
+<style>
+  .quote-form {
+    background: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .quote-form--compact {
+    padding: var(--space-6);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .quote-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .quote-form__contact {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quote-form__submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .quote-form__grid,
+    .quote-form__contact {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

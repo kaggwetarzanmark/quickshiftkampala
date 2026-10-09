@@ -1,0 +1,590 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent("Hi! I need a moving quote in Kampala. Can you help?");
+
+const steps = [
+  { n:'STEP 01', title:'Request a quote',  desc:'Call, WhatsApp or fill in the form - we respond within one hour.' },
+  { n:'STEP 02', title:'Free survey',      desc:'We visit, measure and give you a written fixed price. No obligation.' },
+  { n:'STEP 03', title:'Pack and load',    desc:'Our crew handles everything carefully - insured from start to finish.' },
+  { n:'STEP 04', title:'Settle in',        desc:'Everything in place at your new address before you arrive.' },
+];
+
+// Services: residential first, office second - matches search demand
+const services = [
+  { n:'01', title:'Home & house shifting', desc:'Safe packing, careful transport and full setup at your new home. The most popular move in Kampala.', href:'/services/home-moving' },
+  { n:'02', title:'Office relocation',     desc:'Furniture, equipment and setup planned floor by floor. Overnight so you lose no working day.', href:'/services/office-relocation' },
+  { n:'03', title:'After-hours moving',    desc:'Nights and weekends - no downtime, no overtime premium.', href:'/services/after-hours-moving' },
+  { n:'04', title:'Furniture moving',      desc:'Careful disassembly, protective wrapping and full reassembly.', href:'/services/office-furniture-moving' },
+  { n:'05', title:'Corporate moves',       desc:'Multi-branch moves with a named project manager.', href:'/services/corporate-relocation' },
+  { n:'06', title:'Decommissioning',       desc:'End-of-lease clearance and disposal of your old premises.', href:'/services/office-decommissioning' },
+];
+
+const areas = ['Kololo','Ntinda','Muyenga','Bugolobi','Naguru','Nakasero','Bukoto','Industrial Area'];
+
+const stats = [
+  { val:'100+', label:'Moves completed' },
+  { val:'98%',  label:'On-time delivery' },
+  { val:'5+',   label:'Years in Kampala' },
+  { val:'24h',  label:'Quote turnaround' },
+];
+
+const faqs = [
+  { q:'How much does it cost to move a house in Kampala?', a:'A small apartment (1-2 bedrooms) starts from UGX 600,000. A medium house (3 bedrooms) from UGX 1,200,000. Large homes from UGX 2,000,000. All prices are fixed after a free on-site survey - no hourly rates, no hidden extras.' },
+  { q:'How much do office movers charge in Kampala?', a:'Small offices (1-10 staff) start from UGX 1,500,000. Medium offices (11-50 staff) from UGX 4,500,000. All quotes are fixed after a free survey - what we quote is what you pay.' },
+  { q:'Are my items insured during the move?', a:'Yes. We carry comprehensive goods-in-transit insurance covering all items from the moment we pack them to the moment they are set up at the new address.' },
+  { q:'Do you move on weekends?', a:'Yes - weekend and after-hours moves are our speciality. Most clients move on Friday evening or Saturday so there is zero disruption to their week.' },
+  { q:'Which areas in Kampala do you cover?', a:'We cover every Kampala district - Kololo, Ntinda, Nakasero, Bugolobi, Naguru, Muyenga, Bukoto, Industrial Area and more. We also serve Entebbe, Jinja and other Uganda cities.' },
+];
+---
+
+<!-- SEO: broad moving & relocation focus
+     Primary KW: movers in kampala / house shifting kampala
+     Title: Movers in Kampala | Home & Office Moving - Quick Shift Kampala
+     Meta: Trusted movers in Kampala for home and office relocation. House shifting, residential moves and commercial moves. Licensed, insured, fixed price. Free quote today.
+-->
+<BaseLayout
+  title="Movers in Kampala | Home & Office Moving - Quick Shift Kampala"
+  description="Trusted movers in Kampala for home and office relocation. House shifting, residential moves and commercial moves. Licensed, insured, fixed price. Free quote today."
+>
+
+  <!-- HERO -->
+  <section class="hero w">
+    <div class="hero__copy">
+      <span class="eyebrow">Movers in Kampala, Uganda</span>
+      <h1 class="hero__h1">Moving made simple<span class="hero__dot">.</span></h1>
+      <p class="hero__sub">Home shifting, office relocation or commercial move - one crew, one fixed price, zero surprises. Trusted by families and businesses across Kampala.</p>
+      <div class="hero__btns">
+        <a href="/get-a-quote" class="btn btn--primary btn--lg">Get a free quote</a>
+        <a href={waUrl} class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      </div>
+      <div class="hero__trust">
+        {['Licensed & insured','Fixed price - no surprises','Home & office moves','Overnight & weekend available'].map(t => (
+          <span class="hero__trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Quote card -->
+    <div class="hero__card" id="quote">
+      <b class="hero__card-title">Free quote</b>
+      <form name="hero-quote" method="POST" action="/thank-you" class="hero__form" novalidate>
+        <div style="display:none" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+
+        <label class="form-label form-label--dark" for="h-type">What are you moving?</label>
+        <select id="h-type" name="move_type" class="form-select" required>
+          <option value="" disabled selected>Select move type</option>
+          <option value="home">Home / house shifting</option>
+          <option value="office">Office relocation</option>
+          <option value="furniture">Furniture only</option>
+          <option value="corporate">Corporate / multi-branch</option>
+        </select>
+
+        <label class="form-label form-label--dark" for="h-from">Moving from</label>
+        <select id="h-from" name="from_district" class="form-select" required>
+          <option value="" disabled selected>Select district</option>
+          <option>Nakasero</option><option>Kololo</option><option>Ntinda</option>
+          <option>Bugolobi</option><option>Naguru</option><option>Muyenga</option>
+          <option>Bukoto</option><option>Industrial Area</option><option>Other</option>
+        </select>
+
+        <label class="form-label form-label--dark" for="h-to">Moving to</label>
+        <select id="h-to" name="to_district" class="form-select" required>
+          <option value="" disabled selected>Select district</option>
+          <option>Nakasero</option><option>Kololo</option><option>Ntinda</option>
+          <option>Bugolobi</option><option>Naguru</option><option>Muyenga</option>
+          <option>Bukoto</option><option>Industrial Area</option><option>Other</option>
+        </select>
+
+        <button type="submit" class="btn btn--primary" style="width:100%;height:52px;font-size:17px;border-radius:10px;margin-top:4px">
+          Request quote
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-row w">
+    {stats.map(s => (
+      <div class="stat-item">
+        <div class="stat-val">{s.val}</div>
+        <div class="stat-label">{s.label}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- WHAT WE MOVE - residential focus -->
+  <section class="section w">
+    <span class="eyebrow">What we move</span>
+    <h2 class="h2">Home shifting and office relocation across Kampala.</h2>
+    <p class="lead" style="margin-bottom:40px;max-width:600px">Whether you are moving your family to a new home or your business to a new office, Quick Shift gives you the same professional service, the same fixed price and the same peace of mind.</p>
+
+    <!-- Featured: home + office side by side, big cards -->
+    <div class="hero-services">
+      <a href="/services/home-moving" class="hs-card hs-card--home">
+        <div class="hs-card__label">Most popular</div>
+        <span class="hs-card__num">01</span>
+        <h3 class="hs-card__title">Home & house shifting</h3>
+        <p class="hs-card__desc">Safe packing, careful transport and full setup at your new home. We move apartments, houses and everything in between - from Ntinda to Muyenga and everywhere in Kampala.</p>
+        <span class="hs-card__cta">Get a home moving quote -&gt;</span>
+      </a>
+      <a href="/services/office-relocation" class="hs-card hs-card--office">
+        <span class="hs-card__num">02</span>
+        <h3 class="hs-card__title">Office relocation</h3>
+        <p class="hs-card__desc">Furniture, equipment and IT moved overnight so your team walks in on Monday ready to work. Fixed price, dedicated project manager, zero downtime.</p>
+        <span class="hs-card__cta">Get an office moving quote -&gt;</span>
+      </a>
+    </div>
+
+    <!-- Other services grid -->
+    <div class="svc-grid" style="margin-top:16px">
+      {services.slice(2).map(s => (
+        <a href={s.href} class="svc-card">
+          <span class="svc-card__num">{s.n}</span>
+          <strong class="svc-card__title">{s.title}</strong>
+          <p class="svc-card__desc">{s.desc}</p>
+          <span class="svc-card__arrow">-&gt;</span>
+        </a>
+      ))}
+    </div>
+    <div style="margin-top:28px">
+      <a href="/services" class="btn btn--outline">View all services -&gt;</a>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="stats-band" aria-label="Key statistics">
+    {stats.map(s => (
+      <div class="stats-band__item">
+        <div class="stats-band__val">{s.val}</div>
+        <div class="stats-band__label">{s.label}</div>
+      </div>
+    ))}
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section w">
+    <h2 class="h2">How it works</h2>
+    <div class="g">
+      {steps.map(s => (
+        <div class="step-bar">
+          <div class="step-eyebrow">{s.n}</div>
+          <b class="step-title">{s.title}</b>
+          <p class="step-desc">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PHOTO BAND -->
+  <div class="photo-band">
+    <img
+      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80&auto=format&fit=crop"
+      alt="Quick Shift Kampala professional movers loading a truck for a home or office move"
+      class="img-cover"
+      loading="lazy"
+      width="1600"
+      height="480"
+    />
+    <div class="photo-band__overlay">
+      <div class="photo-band__text w">
+        <span class="eyebrow">Trusted in Kampala since 2019</span>
+        <p class="photo-band__quote">"Your belongings arrive safely. Your new space is ready. That is the promise we make on every move."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY QUICK SHIFT -->
+  <section class="section w">
+    <span class="eyebrow">Why choose us</span>
+    <h2 class="h2">What makes Quick Shift different.</h2>
+    <div class="g" style="gap:16px">
+      {[
+        { title:'Fixed price, always',   points:['Free on-site survey before we quote','Written quote within 24 hours','No hourly rates - ever','No surprise extras on move day'] },
+        { title:'Careful handling',      points:['Professional packing materials','Protective wrapping for all furniture','Fragile items crated separately','Goods-in-transit insurance included'] },
+        { title:'Flexible scheduling',   points:['Weekday, evening and weekend moves','Overnight office moves - no downtime','Same fixed price any day of the week','24/7 WhatsApp support during your move'] },
+      ].map(card => (
+        <div class="why-card">
+          <h3 class="why-card__title">{card.title}</h3>
+          <ul class="check-list" style="margin-top:14px">
+            {card.points.map(p => <li>{p}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- COST ESTIMATOR -->
+  <section class="section est-section" id="estimate" aria-labelledby="est-h2">
+    <div class="w est-inner">
+      <div class="est-copy">
+        <span class="eyebrow">Cost estimator</span>
+        <h2 class="h2" id="est-h2">How much will your move cost?</h2>
+        <p class="lead" style="font-size:16px">Get a rough idea before the free survey. Your exact fixed price comes after we visit.</p>
+        <p style="font-size:13px;color:#9fb0c8;margin-top:12px;line-height:1.6">All amounts in UGX. Estimates are indicative - actual quotes depend on access, floor level and volume.</p>
+      </div>
+      <div class="est-widget" id="est-widget">
+        <div class="est-field">
+          <label class="form-label" for="est-type">Type of move</label>
+          <select id="est-type" class="form-select">
+            <option value="home-small">Home - small apartment (1-2 bed)</option>
+            <option value="home-medium" selected>Home - medium house (3 bed)</option>
+            <option value="home-large">Home - large house (4+ bed)</option>
+            <option value="office-small">Office - small (1-10 staff)</option>
+            <option value="office-medium">Office - medium (11-50 staff)</option>
+            <option value="office-large">Office - large (50+ staff)</option>
+          </select>
+        </div>
+        <div class="est-field">
+          <label class="form-label" for="est-dist">Move distance</label>
+          <select id="est-dist" class="form-select">
+            <option value="same">Same district</option>
+            <option value="near" selected>Nearby district</option>
+            <option value="far">Across Kampala</option>
+            <option value="city">Another city</option>
+          </select>
+        </div>
+        <div class="est-field">
+          <label class="form-label">Add-ons</label>
+          <div class="est-checks">
+            <label class="est-check"><input type="checkbox" id="est-pack" checked /> Full packing service</label>
+            <label class="est-check"><input type="checkbox" id="est-weekend" /> Weekend / after-hours</label>
+          </div>
+        </div>
+        <div class="est-result" aria-live="polite">
+          <span class="est-result__label">Estimated range</span>
+          <span class="est-result__val" id="est-val">UGX 1,200,000 - 2,000,000</span>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary" style="width:100%;justify-content:center">Get your exact fixed quote -&gt;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section class="section w" id="areas">
+    <h2 class="h2">Areas we cover</h2>
+    <p class="lead" style="margin-bottom:28px;max-width:560px">We move homes and offices across every Kampala district. No area is too far, no job too small.</p>
+    <div class="areas-pills">
+      {areas.map(a => (
+        <a href={`/service-areas/kampala/${a.toLowerCase().replace(/\s+/g,'-')}`} class="pill">{a}</a>
+      ))}
+      <a href="/service-areas/kampala" class="pill" style="border-color:#FF7A1A;color:#FF7A1A">All districts -&gt;</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section testi-section">
+    <div class="w testi-inner">
+      <div class="testi-avatar">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&q=80&auto=format&fit=crop&crop=face" alt="Portrait of a satisfied Quick Shift customer" class="img-cover" loading="lazy" width="160" height="160" />
+      </div>
+      <blockquote class="testi-body">
+        <p class="testi-quote">"Quick Shift moved our entire Ntinda home over the weekend. By Sunday evening everything was in place - beds set up, kitchen unpacked, pictures on the walls. The crew was professional and careful with every single item."</p>
+        <footer class="testi-footer">
+          <strong>Sarah Nakamya</strong>
+          <span>Ntinda, Kampala</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section class="section w" id="pricing">
+    <h2 class="h2">Clear prices. No surprises.</h2>
+    <p class="lead" style="margin-bottom:36px">Every quote is fixed after your free survey. No hourly rates.</p>
+    <div class="pricing-list">
+      <div class="pricing-row">
+        <div>
+          <strong class="pricing-row__name">Home / house shifting</strong>
+          <span class="pricing-row__detail">Apartment or house - packing, transport, setup</span>
+        </div>
+        <span class="pricing-row__price">From UGX 600,000</span>
+        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+      </div>
+      <div class="pricing-row pricing-row--hi">
+        <div>
+          <strong class="pricing-row__name">Office relocation</strong>
+          <span class="pricing-row__detail">1-10 staff - packing, overnight transport, full setup</span>
+        </div>
+        <span class="pricing-row__price">From UGX 1,500,000</span>
+        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+      </div>
+      <div class="pricing-row">
+        <div>
+          <strong class="pricing-row__name">Medium office</strong>
+          <span class="pricing-row__detail">11-50 staff - plus IT handling and project manager</span>
+        </div>
+        <span class="pricing-row__price">From UGX 4,500,000</span>
+        <a href="/get-a-quote" class="btn btn--primary btn--sm">Get quote</a>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#9fb0c8;margin-top:16px">
+      <a href="/pricing" style="color:#FF7A1A">View full pricing details -&gt;</a>
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section w" style="max-width:860px" id="faq">
+    <h2 class="h2">Questions</h2>
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+    <div style="margin-top:28px">
+      <a href="/faq" class="btn btn--outline">View all FAQs -&gt;</a>
+    </div>
+  </section>
+
+  <CTABanner
+    title="Ready to move? Get a free quote today."
+    subtitle="Home shifting or office relocation - we visit, measure and give you a fixed price within 24 hours. No obligation."
+  />
+  <WhatsAppButton />
+</BaseLayout>
+
+<script>
+  // Cost estimator - residential + office combined
+  type PriceKey = 'home-small'|'home-medium'|'home-large'|'office-small'|'office-medium'|'office-large';
+  const P: Record<PriceKey, [number,number]> = {
+    'home-small':    [600000,  1200000],
+    'home-medium':   [1200000, 2000000],
+    'home-large':    [2000000, 4000000],
+    'office-small':  [1500000, 3000000],
+    'office-medium': [4500000, 7000000],
+    'office-large':  [9000000, 18000000],
+  };
+  const DM: Record<string, number> = { same:1, near:1.1, far:1.2, city:1.5 };
+
+  function fmt(n: number) { return 'UGX ' + (Math.round(n/100000)*100000).toLocaleString('en-UG'); }
+
+  function update() {
+    const type = (document.getElementById('est-type') as HTMLSelectElement)?.value as PriceKey ?? 'home-medium';
+    const dist = (document.getElementById('est-dist') as HTMLSelectElement)?.value ?? 'near';
+    const pack = (document.getElementById('est-pack') as HTMLInputElement)?.checked;
+    const wknd = (document.getElementById('est-weekend') as HTMLInputElement)?.checked;
+
+    let [lo, hi] = P[type] ?? P['home-medium'];
+    lo *= DM[dist]??1; hi *= DM[dist]??1;
+    if (pack)  { lo*=1.1; hi*=1.15; }
+    if (wknd)  { /* no premium - our USP */ }
+
+    const el = document.getElementById('est-val');
+    if (el) el.textContent = `${fmt(lo)} - ${fmt(hi)}`;
+  }
+
+  ['est-type','est-dist','est-pack','est-weekend'].forEach(id =>
+    document.getElementById(id)?.addEventListener('change', update)
+  );
+  update();
+</script>
+
+<style>
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .hero__h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.08;
+    margin: 8px 0 20px;
+    color: #fff;
+  }
+  .hero__dot { color: #FF7A1A; }
+  .hero__sub {
+    color: #9fb0c8;
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .hero__btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+  .hero__trust { display: flex; flex-wrap: wrap; gap: 16px; }
+  .hero__trust-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: #9fb0c8;
+  }
+
+  /* Quote card */
+  .hero__card {
+    background: #fff; color: #0B1626;
+    border-radius: 20px; padding: 32px;
+  }
+  .hero__card-title { font-size: 22px; font-weight: 800; display: block; margin-bottom: 16px; }
+  .hero__form { display: flex; flex-direction: column; gap: 0; }
+  .hero__form .form-label--dark { color: #0B1626; margin-top: 14px; }
+  .hero__form .form-label--dark:first-of-type { margin-top: 0; }
+
+  /* Stats row */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; border: 1px solid #2c4263;
+    border-radius: 16px; overflow: hidden;
+    margin-top: 16px;
+  }
+  .stat-item {
+    padding: 24px 20px; text-align: center;
+    border-right: 1px solid #2c4263;
+  }
+  .stat-item:last-child { border-right: none; }
+  @media (max-width: 640px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-top: 1px solid #2c4263; }
+    .stat-item:nth-child(4) { border-right: none; border-top: 1px solid #2c4263; }
+  }
+
+  /* Hero service cards - big two up top */
+  .hero-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  @media (max-width: 640px) { .hero-services { grid-template-columns: 1fr; } }
+
+  .hs-card {
+    position: relative;
+    border: 1px solid #2c4263;
+    border-radius: 20px;
+    padding: 32px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, background 0.2s;
+    min-height: 240px;
+  }
+  .hs-card--home {
+    background: linear-gradient(135deg, #FF7A1A 0%, #e55a00 100%);
+    border-color: transparent;
+  }
+  .hs-card--home:hover { background: linear-gradient(135deg, #ff8c35 0%, #f06010 100%); color: #fff; }
+  .hs-card--office { background: #111f35; }
+  .hs-card--office:hover { border-color: #FF7A1A; background: #132030; color: #fff; }
+
+  .hs-card__label {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(255,255,255,0.2);
+    color: #fff; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 99px;
+  }
+  .hs-card--office .hs-card__label { background: rgba(255,122,26,0.15); color: #FF7A1A; }
+
+  .hs-card__num { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
+  .hs-card--home .hs-card__num { color: rgba(255,255,255,0.7); }
+  .hs-card--office .hs-card__num { color: #FF7A1A; opacity: 1; }
+
+  .hs-card__title { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.1; }
+  .hs-card__desc  { font-size: 14px; line-height: 1.6; flex: 1; }
+  .hs-card--home .hs-card__desc  { color: rgba(255,255,255,0.85); }
+  .hs-card--office .hs-card__desc { color: #9fb0c8; }
+
+  .hs-card__cta { font-size: 14px; font-weight: 700; margin-top: 4px; }
+  .hs-card--home .hs-card__cta { color: rgba(255,255,255,0.9); }
+  .hs-card--office .hs-card__cta { color: #FF7A1A; }
+
+  /* Smaller service cards */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .svc-card {
+    background: #111f35; border: 1px solid #2c4263;
+    border-radius: 16px; padding: 24px;
+    text-decoration: none; color: #fff;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .svc-card:hover { border-color: #FF7A1A; background: #132030; color: #fff; }
+  .svc-card__num   { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #FF7A1A; }
+  .svc-card__title { font-size: 18px; font-weight: 800; color: #fff; }
+  .svc-card__desc  { font-size: 14px; color: #9fb0c8; line-height: 1.55; flex: 1; }
+  .svc-card__arrow { font-size: 16px; color: #FF7A1A; font-weight: 700; margin-top: 4px; }
+
+  /* Steps */
+  .step-eyebrow { color: #FF7A1A; font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .step-title   { font-size: 20px; font-weight: 800; color: #fff; display: block; margin-bottom: 8px; }
+  .step-desc    { color: #9fb0c8; line-height: 1.5; font-size: 15px; margin: 0; }
+
+  /* Stats band */
+  .stats-band {
+    background: #0f1d30; color: #FBF8F3;
+    padding: 72px 6vw;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 32px;
+    border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263;
+  }
+  .stats-band__val {
+    font-family: 'Sora', sans-serif; font-weight: 800;
+    font-size: clamp(2.5rem,5vw,3.75rem); color: #FF7A1A; line-height: 1;
+  }
+  .stats-band__label { font-weight: 700; font-size: 15px; margin-top: 6px; color: #9fb0c8; }
+
+  /* Photo band */
+  .photo-band { position: relative; height: 360px; overflow: hidden; }
+  .photo-band__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(11,22,38,0.5), rgba(11,22,38,0.75));
+    display: flex; align-items: flex-end; padding-bottom: 48px;
+  }
+  .photo-band__quote { font-size: clamp(18px,2.5vw,26px); font-weight: 800; color: #fff; line-height: 1.3; max-width: 640px; margin-top: 8px; font-style: italic; }
+
+  /* Why cards */
+  .why-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 28px; }
+  .why-card__title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 0; }
+
+  /* Estimator */
+  .est-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+  .est-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; padding-top: 72px; padding-bottom: 72px; }
+  .est-widget { background: #111f35; border: 1px solid #2c4263; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .est-field { display: flex; flex-direction: column; gap: 6px; }
+  .est-checks { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .est-check  { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #9fb0c8; cursor: pointer; }
+  .est-check input { accent-color: #FF7A1A; width: 15px; height: 15px; cursor: pointer; }
+  .est-result { background: rgba(255,122,26,0.08); border: 1px solid rgba(255,122,26,0.3); border-radius: 12px; padding: 16px 20px; display: flex; flex-direction: column; gap: 4px; }
+  .est-result__label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #9fb0c8; }
+  .est-result__val   { font-size: 22px; font-weight: 800; color: #FF7A1A; }
+
+  /* Areas */
+  .areas-pills { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Testimonial */
+  .testi-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+  .testi-inner { display: flex; flex-wrap: wrap; gap: 36px; align-items: center; padding: 72px 0; }
+  .testi-avatar { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; border: 2px solid #2c4263; flex-shrink: 0; }
+  .testi-body   { flex: 1; min-width: 260px; margin: 0; }
+  .testi-quote  { font-size: clamp(18px,2.5vw,24px); font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 16px; font-style: italic; }
+  .testi-footer { display: flex; flex-direction: column; gap: 2px; }
+  .testi-footer strong { color: #fff; font-size: 15px; }
+  .testi-footer span   { color: #9fb0c8; font-size: 13px; }
+
+  /* Pricing */
+  .pricing-list { border: 1px solid #2c4263; border-radius: 16px; overflow: hidden; }
+  .pricing-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; border-bottom: 1px solid #2c4263; background: #111f35; }
+  .pricing-row:last-child { border-bottom: none; }
+  .pricing-row--hi { background: #132030; }
+  .pricing-row__name   { font-size: 18px; font-weight: 800; color: #fff; display: block; }
+  .pricing-row__detail { font-size: 13px; color: #9fb0c8; display: block; margin-top: 2px; }
+  .pricing-row__price  { font-size: 18px; font-weight: 800; color: #FF7A1A; white-space: nowrap; }
+
+  /* Responsive */
+  @media (max-width: 1024px) { .est-inner { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 40px; }
+    .pricing-row { flex-direction: column; align-items: flex-start; }
+    .pricing-row .btn { width: 100%; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,60 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CTABanner from '../../../components/CTABanner.astro';
+import WhatsAppButton from '../../../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = movers in muyenga | Title: Movers in Muyenga | Trusted Moving Services -->
+<BaseLayout
+  title="Movers in Muyenga | Trusted Moving Services"
+  description="Trusted office and home movers in Muyenga, Kampala. Professional relocation services for businesses and households. Fixed-price quotes. Licensed & insured. Free survey."
+>
+  <PageHero
+    eyebrow="Muyenga, Kampala"
+    title="Movers in Muyenga"
+    subtitle="Trusted movers in Muyenga - professional, insured, fixed price. Serving the offices and households of one of Kampala's most prestigious neighbourhoods."
+    image="/images/muyenga.jpeg"
+    imageAlt="Muyenga Kampala residential and office area"
+    crumbs={[{label:'Home',href:'/'},{label:'Areas',href:'/service-areas/kampala'},{label:'Muyenga'}]}
+    cta={{label:'Get a Muyenga quote',href:'/get-a-quote'}}
+  />
+  <div class="w page-body">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Muyenga specialists</span>
+        <h2 class="h2">Muyenga moves done right.</h2>
+        <div class="prose">
+          <p>Muyenga is one of Kampala's most desirable addresses - a mix of premium residential properties, boutique offices, embassies and high-value households. <strong>Movers in Muyenga</strong> need to be careful, discreet and professional.</p>
+          <p>Quick Shift has extensive experience moving high-value homes and offices in Muyenga. We treat every item with the care it deserves - from antique furniture to sensitive documents. Same fixed-price model, same insured crew.</p>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary btn--lg" style="margin-top:28px">Get a Muyenga quote</a>
+      </div>
+      <div class="side-photo">
+        <img src="/images/muyenga.jpeg" alt="Muyenga Kampala prestigious residential and office neighbourhood" class="img-cover" loading="lazy" width="800" height="600" />
+      </div>
+    </div>
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="h2">Muyenga questions</h2>
+      {[
+        {q:'How much does a move in Muyenga cost?',a:'Home moves start from UGX 600,000 for a small apartment and from UGX 1,200,000 for a 3-bedroom house. Office moves from UGX 1,500,000. All fixed after free survey.'},
+        {q:'Can you handle high-value furniture and antiques in Muyenga?',a:'Yes. We use specialist protective wrapping for high-value items and can provide additional documentation and insurance cover for particularly valuable pieces on request.'},
+      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+    <section style="margin-top:48px">
+      <span class="eyebrow">Nearby districts</span>
+      <h2 class="h2">We also serve</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+        {[{l:'Kololo',h:'/service-areas/kampala/kololo'},{l:'Naguru',h:'/service-areas/kampala/naguru'},{l:'Bugolobi',h:'/service-areas/kampala/bugolobi'},{l:'All districts',h:'/service-areas/kampala'}].map(d=><a href={d.h} class="pill">{d.l}</a>)}
+      </div>
+    </section>
+  </div>
+  <CTABanner title="Moving in Muyenga?" subtitle="Get a fixed price within 24 hours of your free survey." primaryLabel="Get a free survey" />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+</style>

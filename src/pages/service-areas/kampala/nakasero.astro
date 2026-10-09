@@ -1,0 +1,77 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CTABanner from '../../../components/CTABanner.astro';
+import WhatsAppButton from '../../../components/WhatsAppButton.astro';
+---
+<!-- KW research: Primary = office movers nakasero
+     Secondary: CBD movers kampala, nakasero relocation, movers near parliament, commercial movers CBD kampala
+     Title (exact): Office Movers in Nakasero CBD | Kampala
+     Meta (exact, 155 chars): Expert office movers in Nakasero, Kampala. We handle CBD access restrictions, freight lifts and building management coordination. Free on-site survey. Licensed & insured.
+     H1: Office Movers in Nakasero CBD -->
+<BaseLayout
+  title="Office Movers in Nakasero CBD | Kampala"
+  description="Expert office movers in Nakasero, Kampala. We handle CBD access restrictions, freight lifts and building management coordination. Free on-site survey. Licensed & insured."
+>
+    <PageHero
+    eyebrow="Nakasero, Kampala"
+    title="Office Movers in Nakasero CBD"
+    subtitle="Nakasero is Kampala's most complex district for office moves - tight roads, high-rise buildings, strict access hours. We know every building, every loading bay and every freight lift."
+    image="/images/nakasero.jpeg"
+    imageAlt="Nakasero CBD Kampala office district with commercial buildings"
+    crumbs={[{label:'Home',href:'/'},{label:'Areas',href:'/service-areas/kampala'},{label:'Nakasero'}]}
+    cta={{label:'Get a Nakasero quote',href:'/get-a-quote'}}
+  />
+  <div class="w page-body">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">CBD specialists</span>
+        <h2 class="h2">Kampala's CBD demands a specialist.</h2>
+        <div class="prose">
+          <p>Nakasero hosts Parliament Avenue, Crested Towers, Workers House and dozens of corporate HQs and NGO offices. It is Kampala's CBD - and the most demanding district for commercial movers. Loading bay access is restricted to specific hours. Freight lifts must be booked in advance. Building security requires crew lists in advance of the move.</p>
+          <p>Quick Shift handles all CBD coordination as part of our standard service - no extra charges. We've moved offices across Nakasero's most demanding buildings and know exactly how each one operates. Whether you need <strong>office movers in Nakasero</strong> for a single floor or a full building relocation, we've done it before.</p>
+        </div>
+        <a href="/get-a-quote" class="btn btn--primary btn--lg" style="margin-top:28px">Get a Nakasero quote</a>
+      </div>
+      <div class="side-photo"><img src="/images/nakasero.jpeg" alt="Professional office movers working in a Nakasero CBD high-rise building" class="img-cover" loading="lazy" width="800" height="600" /></div>
+    </div>
+    <section style="margin-top:72px">
+      <span class="eyebrow">Buildings we know</span>
+      <h2 class="h2">Nakasero buildings we've moved in.</h2>
+      <div class="bldg-grid">
+        {['Crested Towers','Workers House','DFCU Bank Building','Communication House','UAP Old Mutual Tower','Jubilee Insurance Building','Rwenzori House','Parliament Avenue offices'].map(b => (
+          <div class="inc-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{b}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section style="margin-top:72px;max-width:760px">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="h2">Nakasero questions</h2>
+      {[
+        {q:'Do you handle CBD building access and parking?',a:'Yes. We coordinate freight lift booking, loading bay access and security sign-in. We know the access restrictions on Parliament Avenue and plan around them - typically starting moves after 7pm.'},
+        {q:'Can you move offices in Crested Towers?',a:'Yes. We have moved multiple offices in Crested Towers, Workers House and other Nakasero high-rises. We book the freight lift in advance and coordinate after-hours access cards.'},
+        {q:'How much does it cost to move an office in Nakasero?',a:'Small offices start from UGX 1,500,000. Medium offices from UGX 4,500,000. All quotes fixed after free survey.'},
+      ].map(f => (<details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+    <section style="margin-top:48px">
+      <span class="eyebrow">Nearby districts</span>
+      <h2 class="h2">We also serve</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+        {[{l:'Kololo',h:'/service-areas/kampala/kololo'},{l:'Ntinda',h:'/service-areas/kampala/ntinda'},{l:'Bugolobi',h:'/service-areas/kampala/bugolobi'},{l:'All districts',h:'/service-areas/kampala'}].map(d=><a href={d.h} class="pill">{d.l}</a>)}
+      </div>
+    </section>
+  </div>
+  <CTABanner title="Ready to move your Nakasero office?" subtitle="We handle the CBD complexity - freight lifts, security, loading bays - all in your fixed price." primaryLabel="Get a free survey" />
+  <WhatsAppButton />
+</BaseLayout>
+<style>
+  .page-body { padding-top: 64px; padding-bottom: 72px; }
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 420px; } }
+  .side-photo { border-radius: 16px; overflow: hidden; height: 460px; border: 1px solid #2c4263; }
+  .bldg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 24px; }
+  .inc-item { display: flex; align-items: flex-start; gap: 10px; background: #111f35; border: 1px solid #2c4263; border-radius: 10px; padding: 12px 14px; font-size: 14px; font-weight: 500; color: #cdd8e8; line-height: 1.4; }
+</style>

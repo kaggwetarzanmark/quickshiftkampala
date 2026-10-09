@@ -1,0 +1,85 @@
+﻿---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  href: string;
+  featured?: boolean;
+}
+const { number, title, description, href, featured = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`svc-card ${featured ? 'svc-card--orange' : ''}`}
+  aria-label={`${title} - learn more`}
+>
+  <div class="svc-card__num" aria-hidden="true">{number}</div>
+  <h3 class="svc-card__title">{title}</h3>
+  <p class="svc-card__desc">{description}</p>
+  <span class="svc-card__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .svc-card {
+    border: 2px solid #1C1917;
+    border-radius: 20px;
+    padding: 28px;
+    display: block;
+    text-decoration: none;
+    color: #1C1917;
+    background: #fff;
+    transition: box-shadow .18s, transform .18s;
+  }
+
+  .svc-card:hover {
+    box-shadow: 6px 6px 0 #1C1917;
+    transform: translate(-2px, -2px);
+    opacity: 1;
+  }
+
+  .svc-card--orange {
+    background: #FF6A00;
+    color: #1C1917;
+  }
+
+  .svc-card__num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    color: #C2410C;
+    line-height: 1;
+  }
+  .svc-card--orange .svc-card__num { color: #1C1917; }
+
+  .svc-card__title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    margin: 10px 0 8px;
+    color: #1C1917;
+    line-height: 1;
+  }
+
+  .svc-card__desc {
+    margin: 0 0 16px;
+    line-height: 1.6;
+    color: #44403C;
+    font-size: 15px;
+  }
+  .svc-card--orange .svc-card__desc { color: #1C1917; }
+
+  .svc-card__arrow {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF6A00;
+    transition: transform .15s;
+    display: inline-block;
+  }
+  .svc-card--orange .svc-card__arrow { color: #1C1917; }
+  .svc-card:hover .svc-card__arrow { transform: translateX(4px); }
+</style>

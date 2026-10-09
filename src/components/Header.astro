@@ -1,0 +1,385 @@
+﻿---
+/* V2 nav: flex, justify-content:space-between, padding-top:28px, color:#fff
+   Logo: bold 22px  |  Nav links: gap:28px font-weight:500
+   CTA: bg:#FF7A1A color:#0F1B2D fw:800 padding:12px 24px border-radius:8px */
+
+const waUrl = 'https://wa.me/256700000000?text=' + encodeURIComponent('Hi! I need a quote for office relocation.');
+
+const services = [
+  { label:'Office Relocation',      href:'/services/office-relocation',      desc:'Full overnight moves' },
+  { label:'Corporate Relocation',   href:'/services/corporate-relocation',   desc:'Multi-branch & project managed' },
+  { label:'After-Hours Moving',     href:'/services/after-hours-moving',     desc:'Nights & weekends, zero downtime' },
+  { label:'Furniture Moving',       href:'/services/office-furniture-moving',desc:'Disassembly, wrap & reassembly' },
+  { label:'Decommissioning',        href:'/services/office-decommissioning', desc:'End-of-lease clearance' },
+  { label:'Home Moving',            href:'/services/home-moving',            desc:'Residential relocation' },
+];
+
+const areas = [
+  { label:'Nakasero',        href:'/service-areas/kampala/nakasero' },
+  { label:'Kololo',          href:'/service-areas/kampala/kololo' },
+  { label:'Ntinda',          href:'/service-areas/kampala/ntinda' },
+  { label:'Bugolobi',        href:'/service-areas/kampala/bugolobi' },
+  { label:'Naguru',          href:'/service-areas/kampala/naguru' },
+  { label:'Muyenga',         href:'/service-areas/kampala/muyenga' },
+  { label:'Bukoto',          href:'/service-areas/kampala/bukoto' },
+  { label:'Industrial Area', href:'/service-areas/kampala/industrial-area' },
+];
+---
+
+<header class="site-header" id="site-header">
+  <nav class="w nav-inner" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="logo" aria-label="Quick Shift Kampala - home">
+      Quick Shift<span class="logo-dot" aria-hidden="true">.</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="nav-links" id="nav-links">
+      <!-- Services dropdown -->
+      <div class="nav-item-drop">
+        <button class="nav-link nav-drop-btn" aria-expanded="false" aria-haspopup="true" id="svc-btn">
+          Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown" id="svc-panel">
+          <div class="drop-services">
+            {services.map(s => (
+              <a href={s.href} class="drop-link">
+                <span class="drop-link__title">{s.label}</span>
+                <span class="drop-link__desc">{s.desc}</span>
+              </a>
+            ))}
+          </div>
+          <div class="drop-footer">
+            <a href="/services" class="drop-all">All services →</a>
+            <a href="/get-a-quote" class="btn btn--primary btn--sm">Get a quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Areas dropdown -->
+      <div class="nav-item-drop">
+        <button class="nav-link nav-drop-btn" aria-expanded="false" aria-haspopup="true" id="area-btn">
+          Areas <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown" id="area-panel">
+          <div class="drop-areas">
+            {areas.map(a => <a href={a.href} class="area-link">{a.label}</a>)}
+          </div>
+          <a href="/service-areas/kampala" class="drop-footer drop-all" style="border-top:1px solid #2c4263;margin-top:4px;padding-top:14px;display:block">All Kampala districts →</a>
+        </div>
+      </div>
+
+      <a href="/pricing" class="nav-link">Pricing</a>
+      <a href="/faq" class="nav-link">FAQ</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="nav-ctas">
+      <a href={waUrl} class="nav-wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
+      </a>
+      <a href="/get-a-quote" class="btn btn--primary">Get a quote</a>
+    </div>
+
+    <!-- Burger -->
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile sticky CTA bar -->
+<div class="mob-bar" id="mob-bar">
+  <a href="tel:+256700000000" class="mob-bar__btn mob-bar__btn--call">Call us</a>
+  <a href={waUrl} class="mob-bar__btn mob-bar__btn--wa" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  <a href="/get-a-quote" class="mob-bar__btn mob-bar__btn--quote">Get a quote</a>
+</div>
+
+<script>
+  // Dropdowns
+  function setupDrop(btnId: string, panelId: string) {
+    const btn = document.getElementById(btnId) as HTMLButtonElement | null;
+    const panel = document.getElementById(panelId);
+    if (!btn || !panel) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!open) { btn.setAttribute('aria-expanded','true'); panel.classList.add('is-open'); }
+    });
+  }
+  function closeAll() {
+    document.querySelectorAll('.nav-drop-btn').forEach(b => b.setAttribute('aria-expanded','false'));
+    document.querySelectorAll('.dropdown').forEach(p => p.classList.remove('is-open'));
+  }
+  setupDrop('svc-btn','svc-panel');
+  setupDrop('area-btn','area-panel');
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+  // Mobile burger
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('nav-links');
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    navLinks?.classList.toggle('is-open');
+    burger.classList.toggle('is-open');
+  });
+  navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('is-open');
+    burger?.setAttribute('aria-expanded','false');
+    burger?.classList.remove('is-open');
+    closeAll();
+  }));
+
+  // Scroll - sticky shadow + mobile bar
+  const header = document.getElementById('site-header');
+  const mobBar = document.getElementById('mob-bar');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header?.classList.toggle('scrolled', y > 10);
+    mobBar?.classList.toggle('is-visible', y > 400);
+  }, { passive: true });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #0B1626;
+    transition: box-shadow 0.2s;
+  }
+  .site-header.scrolled {
+    box-shadow: 0 1px 0 #2c4263, 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  /* Nav - V2 exact */
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+  }
+
+  /* Logo - V2: bold 22px + orange dot */
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .logo:hover { color: #fff; }
+  .logo-dot { color: #FF7A1A; }
+
+  /* Nav links - V2: gap:28px font-weight:500 */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-weight: 500;
+  }
+
+  .nav-link {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    font-family: inherit;
+  }
+  .nav-link:hover { color: #FF7A1A; }
+
+  .nav-drop-btn { color: #fff; }
+  .nav-drop-btn:hover { color: #FF7A1A; }
+  .nav-item-drop:has(.dropdown.is-open) .nav-drop-btn { color: #FF7A1A; }
+
+  /* Dropdown panels */
+  .nav-item-drop { position: relative; }
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 16px);
+    left: -20px;
+    background: #111f35;
+    border: 1px solid #2c4263;
+    border-radius: 16px;
+    padding: 16px;
+    z-index: 200;
+    min-width: 220px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .dropdown.is-open { display: block; }
+
+  /* Services dropdown - 2 cols */
+  .drop-services { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; min-width: 480px; }
+
+  .drop-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .drop-link:hover { background: rgba(255,122,26,0.1); }
+  .drop-link__title { font-weight: 700; font-size: 14px; color: #fff; }
+  .drop-link__desc  { font-size: 12px; color: #9fb0c8; }
+
+  .drop-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #2c4263;
+  }
+  .drop-all {
+    font-size: 13px;
+    font-weight: 700;
+    color: #9fb0c8;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .drop-all:hover { color: #FF7A1A; }
+
+  /* Areas dropdown */
+  .drop-areas { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .area-link {
+    display: block;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #9fb0c8;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .area-link:hover { background: rgba(255,122,26,0.1); color: #FF7A1A; }
+
+  /* CTA group */
+  .nav-ctas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .nav-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(37,211,102,0.12);
+    color: #25D366;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .nav-wa:hover { background: rgba(37,211,102,0.2); color: #25D366; }
+
+  /* Burger */
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .burger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger.is-open span:nth-child(2) { opacity: 0; }
+  .burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile sticky bar */
+  .mob-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 900;
+    background: #060e1a;
+    border-top: 1px solid #2c4263;
+    padding: 10px 16px;
+    gap: 8px;
+    transform: translateY(100%);
+    transition: transform 0.25s;
+  }
+  .mob-bar.is-visible { transform: translateY(0); }
+  .mob-bar__btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .mob-bar__btn--call  { background: rgba(255,255,255,0.08); color: #fff; }
+  .mob-bar__btn--wa    { background: #25D366; color: #fff; }
+  .mob-bar__btn--quote { background: #FF7A1A; color: #0B1626; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-wa    { display: none; }
+    .burger    { display: flex; }
+    .mob-bar   { display: flex; }
+
+    .nav-links.is-open {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: #0f1d30;
+      border-bottom: 1px solid #2c4263;
+      padding: 16px 32px 24px;
+      gap: 4px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .nav-links.is-open .nav-link { font-size: 16px; padding: 10px 0; width: 100%; border-bottom: 1px solid rgba(44,66,99,0.5); }
+    .nav-item-drop { width: 100%; }
+    .dropdown { position: static; border: none; box-shadow: none; border-radius: 0; padding: 0; background: transparent; display: none; }
+    .dropdown.is-open { display: block; padding: 8px 0 8px 12px; }
+    .drop-services { grid-template-columns: 1fr; min-width: 0; }
+    .drop-areas { grid-template-columns: 1fr 1fr; }
+    .drop-footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-ctas .btn { display: none; }
+  }
+</style>
