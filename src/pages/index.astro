@@ -249,19 +249,51 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <section class="section testi-section">
-    <div class="w testi-inner">
-      <div class="testi-avatar">
-        <img src="/images/sarah.jpeg" alt="Sarah Nakamya - Quick Shift Kampala customer" class="img-cover" loading="lazy" width="160" height="160" />
+  <!-- WHATSAPP REVIEW -->
+  <section class="section wa-review-section">
+    <div class="w wa-review-wrap">
+      <div class="wa-review-label">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
+        <span>WhatsApp review</span>
       </div>
-      <blockquote class="testi-body">
-        <p class="testi-quote">"Quick Shift moved our entire Ntinda home over the weekend. By Sunday evening everything was in place - beds set up, kitchen unpacked, pictures on the walls. The crew was professional and careful with every single item."</p>
-        <footer class="testi-footer">
-          <strong>Sarah Nakamya</strong>
-          <span>Ntinda, Kampala</span>
-        </footer>
-      </blockquote>
+
+      <div class="wa-phone">
+        <!-- Phone frame -->
+        <div class="wa-screen">
+          <!-- Chat header -->
+          <div class="wa-header">
+            <div class="wa-header__avatar">
+              <img src="/images/sarah.jpeg" alt="Sarah Nakamya" class="img-cover" width="36" height="36" loading="lazy" />
+            </div>
+            <div class="wa-header__info">
+              <span class="wa-header__name">Sarah Nakamya</span>
+              <span class="wa-header__sub">Ntinda, Kampala</span>
+            </div>
+          </div>
+
+          <!-- Chat bubble -->
+          <div class="wa-chat">
+            <div class="wa-bubble">
+              <p class="wa-bubble__text">Quick Shift moved our entire Ntinda home over the weekend. By Sunday evening everything was in place - beds set up, kitchen unpacked, pictures on the walls. The crew was professional and careful with every single item. Would 100% recommend 🙏</p>
+              <div class="wa-bubble__meta">
+                <span class="wa-bubble__time">Sunday 6:42 PM</span>
+                <svg class="wa-bubble__ticks" width="16" height="11" viewBox="0 0 16 11" fill="none" aria-label="Read" aria-hidden="true">
+                  <path d="M1 5.5l3.5 3.5 7-7" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 5.5l3.5 3.5 7-7" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wa-review-cta">
+        <p class="wa-review-cta__text">Join 100+ happy customers across Kampala.</p>
+        <a href="https://wa.me/256753803582?text=Hi!%20I%20need%20a%20free%20moving%20quote.%20Can%20you%20help%3F" class="btn btn--wa" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.028 7.769L0 32l8.469-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.07 22.188c-.337.947-1.97 1.811-2.7 1.868-.73.057-1.424.349-4.8-1.001-4.058-1.629-6.662-5.806-6.862-6.073-.2-.267-1.629-2.163-1.629-4.125 0-1.962 1.029-2.928 1.394-3.328.365-.4.796-.5 1.061-.5h.763c.245.012.573-.093.898.685.337.8 1.144 2.762 1.244 2.962.1.2.167.434.033.7-.133.267-.2.433-.4.666-.2.234-.42.523-.6.702-.2.2-.408.416-.175.816.233.4 1.036 1.707 2.223 2.764 1.527 1.362 2.814 1.784 3.214 1.984.4.2.633.167.866-.1.233-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.329 1.1 2.729 1.3.4.2.667.3.767.467.1.167.1.967-.237 1.914z"/></svg>
+          Chat with us on WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
@@ -543,15 +575,62 @@ const faqSchema = {
   /* Areas */
   .areas-pills { display: flex; flex-wrap: wrap; gap: 12px; }
 
-  /* Testimonial */
-  .testi-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
-  .testi-inner { display: flex; flex-wrap: wrap; gap: 36px; align-items: center; padding: clamp(48px, 7vw, 72px) 0; }
-  .testi-avatar { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; border: 2px solid #2c4263; flex-shrink: 0; }
-  .testi-body   { flex: 1; min-width: 260px; margin: 0; }
-  .testi-quote  { font-size: clamp(18px,2.5vw,24px); font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 16px; font-style: italic; }
-  .testi-footer { display: flex; flex-direction: column; gap: 2px; }
-  .testi-footer strong { color: #fff; font-size: 15px; }
-  .testi-footer span   { color: #9fb0c8; font-size: 13px; }
+  /* WhatsApp review */
+  .wa-review-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+  .wa-review-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 28px; padding: clamp(48px, 7vw, 72px) 0; text-align: center;
+  }
+  .wa-review-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700; color: #25D366;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  /* Phone mockup */
+  .wa-phone {
+    width: 100%; max-width: 360px;
+    background: #111f35; border: 1px solid #2c4263;
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+  .wa-screen { background: #0a1929; }
+  /* Chat header */
+  .wa-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; background: #1f2c34;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .wa-header__avatar {
+    width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+  }
+  .wa-header__name { display: block; font-size: 15px; font-weight: 700; color: #fff; text-align: left; }
+  .wa-header__sub  { display: block; font-size: 12px; color: #8696a0; text-align: left; }
+  /* Chat bubble */
+  .wa-chat { padding: 16px 14px 20px; }
+  .wa-bubble {
+    background: #202c33;
+    border-radius: 8px 8px 8px 0;
+    padding: 10px 14px 8px;
+    max-width: 90%; text-align: left;
+    position: relative;
+  }
+  .wa-bubble::before {
+    content: '';
+    position: absolute; left: -8px; top: 0;
+    border: 8px solid transparent;
+    border-right-color: #202c33;
+    border-top-color: #202c33;
+  }
+  .wa-bubble__text {
+    font-size: 14px; line-height: 1.6; color: #e9edef; margin: 0 0 6px;
+  }
+  .wa-bubble__meta {
+    display: flex; align-items: center; justify-content: flex-end; gap: 4px;
+  }
+  .wa-bubble__time { font-size: 11px; color: #8696a0; }
+  .wa-bubble__ticks { flex-shrink: 0; }
+  /* CTA */
+  .wa-review-cta__text { font-size: 16px; color: #9fb0c8; margin-bottom: 16px; }
 
   /* Pricing */
   .pricing-list { border: 1px solid #2c4263; border-radius: 16px; overflow: hidden; }
