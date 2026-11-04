@@ -38,6 +38,16 @@ const faqs = [
   { q:'Do you move on weekends?', a:'Yes - weekend and after-hours moves are our speciality. Most clients move on Friday evening or Saturday so there is zero disruption to their week.' },
   { q:'Which areas in Kampala do you cover?', a:'We cover every Kampala district - Kololo, Ntinda, Nakasero, Bugolobi, Naguru, Muyenga, Bukoto, Industrial Area and more. We also serve Entebbe, Jinja and other Uganda cities.' },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
 ---
 
 <!-- SEO: broad moving & relocation focus
@@ -48,6 +58,7 @@ const faqs = [
 <BaseLayout
   title="Movers in Kampala | Home & Office Moving - Quick Shift Kampala"
   description="Trusted movers in Kampala for home and office relocation. House shifting, residential moves and commercial moves. Licensed, insured, fixed price. Free quote today."
+  schema={faqSchema}
 >
 
   <!-- HERO -->
