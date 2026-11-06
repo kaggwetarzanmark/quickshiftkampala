@@ -92,18 +92,6 @@ const stats = [
         </div>
       </div>
 
-      <!-- Team photo -->
-      <div class="team-card team-card--wide">
-        <div class="team-card__photo team-card__photo--wide">
-          <img src="/images/team.jpg" alt="Quick Shift Kampala full crew" class="img-cover" loading="lazy" width="800" height="400" />
-        </div>
-        <div class="team-card__info">
-          <strong class="team-card__name">The Quick Shift Crew</strong>
-          <span class="team-card__role">Trained moving specialists</span>
-          <p class="team-card__bio">Our crew members are trained in professional packing, furniture disassembly and reassembly, fragile item handling and safe loading. Every crew member wears a branded Quick Shift uniform so you always know who is in your home or office.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -134,30 +122,6 @@ const stats = [
       </div>
     </div>
   </div>
-
-  <!-- WHY CHOOSE US -->
-  <section class="section w">
-    <span class="eyebrow">Why Quick Shift</span>
-    <h2 class="h2">What makes us different.</h2>
-    <div class="diff-grid">
-      {[
-        { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: 'Licensed & insured', desc: 'Every move is covered by goods-in-transit insurance from the moment we start packing.' },
-        { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Fixed price guaranteed', desc: 'Free on-site survey, written quote within 24 hours. The price we quote is the price you pay.' },
-        { icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z', title: 'Weekends at no extra cost', desc: 'Weekend and after-hours moves available every week at the same fixed price — no overtime premium.' },
-        { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', title: 'Our own trained crew', desc: 'We never use subcontractors. The same uniformed team does your survey, packs and moves your belongings.' },
-        { icon: 'M5 13l4 4L19 7', title: 'Home & office specialists', desc: 'From single-room apartments to multi-floor corporate offices — one company, one standard of service.' },
-        { icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', title: '1-hour response', desc: 'WhatsApp or call us and we respond within one hour — seven days a week.' },
-      ].map(d => (
-        <div class="diff-card">
-          <div class="diff-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={d.icon}/></svg>
-          </div>
-          <strong class="diff-card__title">{d.title}</strong>
-          <p class="diff-card__desc">{d.desc}</p>
-        </div>
-      ))}
-    </div>
-  </section>
 
   <CTABanner
     title="Ready to move? Let's talk."
@@ -237,25 +201,33 @@ const stats = [
     display: flex;
     flex-direction: column;
   }
-  .team-card--wide { grid-column: span 2; flex-direction: row; }
-  .team-card__photo { height: 320px; flex-shrink: 0; }
-  .team-card--wide .team-card__photo { width: 400px; height: auto; }
+  .team-card__photo {
+    height: 360px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .team-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
   .team-card__info { padding: 24px; }
   .team-card__name { font-size: 18px; font-weight: 800; color: #fff; display: block; margin-bottom: 4px; }
   .team-card__role { font-size: 13px; font-weight: 700; color: #FF7A1A; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 14px; }
   .team-card__bio  { font-size: 14px; color: #9fb0c8; line-height: 1.65; margin: 0; }
 
-  /* Values */
+  /* Values — exactly 4 columns, never wraps to a second row with fewer */
   .values-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
     margin-top: 32px;
   }
   .value-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 24px; }
   .value-card__dot { width: 12px; height: 12px; background: #FF7A1A; border-radius: 50%; margin-bottom: 16px; }
-  .value-card__title { font-size: 17px; font-weight: 800; color: #fff; display: block; margin-bottom: 10px; }
+  .value-card__title { font-size: 16px; font-weight: 800; color: #fff; display: block; margin-bottom: 10px; }
   .value-card__desc  { font-size: 14px; color: #9fb0c8; line-height: 1.6; margin: 0; }
 
   /* Photo band */
@@ -273,16 +245,8 @@ const stats = [
   }
 
   /* Why different */
-  .diff-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .diff-card { background: #111f35; border: 1px solid #2c4263; border-radius: 14px; padding: 22px; }
-  .diff-card__icon { width: 44px; height: 44px; background: rgba(255,122,26,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-  .diff-card__title { font-size: 16px; font-weight: 800; color: #fff; display: block; margin-bottom: 8px; }
-  .diff-card__desc  { font-size: 13px; color: #9fb0c8; line-height: 1.6; margin: 0; }
+  .diff-grid { display: none; }
+  .diff-card { display: none; }
 
   /* Responsive */
   @media (max-width: 900px) {
@@ -290,14 +254,14 @@ const stats = [
     .about-hero__photo { height: 300px; }
     .story-grid { grid-template-columns: 1fr; gap: 36px; }
     .team-grid { grid-template-columns: 1fr; }
-    .team-card--wide { grid-column: span 1; flex-direction: column; }
-    .team-card--wide .team-card__photo { width: 100%; height: 280px; }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .about-hero { padding-top: 40px; padding-bottom: 40px; }
     .about-hero__photo { height: 240px; }
     .stats-panel { grid-template-columns: 1fr 1fr; }
-    .team-card__photo { height: 260px; }
+    .team-card__photo { height: 300px; }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
     .about-band { height: 280px; }
     .about-band__overlay { padding-bottom: 28px; }
   }
