@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const waUrl = 'https://wa.me/256753803582?text=' + encodeURIComponent('Hi! I need a free moving quote. Can you help?');
+
+const values = [
+  { title: 'Fixed price, always', desc: 'We visit, measure and give you a written fixed price. What we quote is what you pay — no hourly rates, no surprise extras on move day.' },
+  { title: 'Care over speed', desc: 'Every item is wrapped, secured and handled with the same care we would give our own belongings. We take our time to do it right.' },
+  { title: 'Zero downtime', desc: 'Most of our office moves happen overnight or on weekends so your team walks in on Monday morning to a fully set-up workspace.' },
+  { title: 'Honest communication', desc: 'We tell you exactly what to expect before, during and after the move. No surprises, no hidden steps, no confusion on move day.' },
+];
+
+const stats = [
+  { val: '100+', label: 'Successful moves' },
+  { val: '5+',   label: 'Years in Kampala' },
+  { val: '98%',  label: 'On-time delivery' },
+  { val: '24h',  label: 'Quote turnaround' },
+];
+---
+<BaseLayout
+  title="About Quick Shift Kampala | Professional Movers in Uganda"
+  description="Meet the team behind Quick Shift Kampala. Uganda's trusted home and office movers since 2019. Fixed price, fully insured, available every day of the week."
+>
+
+  <!-- HERO -->
+  <section class="about-hero w">
+    <div class="about-hero__copy">
+      <span class="eyebrow">About Quick Shift Kampala</span>
+      <h1 class="about-hero__h1">We move you quickly<span style="color:#FF7A1A">.</span> We move you safely<span style="color:#FF7A1A">.</span></h1>
+      <p class="about-hero__sub">Quick Shift Kampala is a professional home and office moving company based in Kampala, Uganda. We were founded on one belief — that every person and every business deserves a move that is professional, stress-free and fairly priced.</p>
+      <a href={waUrl} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Get a free quote</a>
+    </div>
+    <div class="about-hero__photo">
+      <img src="/images/team  back  photo.jpg" alt="Quick Shift Kampala crew in branded uniforms — we move you quickly and safely" class="img-cover" loading="eager" width="600" height="500" />
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section w story-section">
+    <div class="story-grid">
+      <div>
+        <span class="eyebrow">Our story</span>
+        <h2 class="h2">Built in Kampala, for Kampala.</h2>
+        <div class="prose">
+          <p>Quick Shift Kampala started with a simple frustration — most home and office moves in Kampala were done with hired pickups, untrained labour and zero accountability. Furniture got scratched. Items went missing. Prices changed on move day. Clients had no recourse.</p>
+          <p>We set out to change that. Since 2019 we have been building a moving company that treats every client — whether moving a single room or an entire corporate floor — with the same professionalism, the same care and the same fixed price promise.</p>
+          <p>Today we are one of Kampala's most trusted moving companies, serving families, businesses, NGOs, embassies and corporate clients across every district in the city and beyond.</p>
+        </div>
+      </div>
+      <div class="stats-panel">
+        {stats.map(s => (
+          <div class="stats-panel__item">
+            <div class="stats-panel__val">{s.val}</div>
+            <div class="stats-panel__label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section w">
+    <span class="eyebrow">The team</span>
+    <h2 class="h2">The people behind every move.</h2>
+    <p class="lead" style="max-width:580px;margin-bottom:48px;font-size:16px">Every move is handled by our own trained crew — not subcontractors. The same people who show up for your survey are the ones who pack and move your belongings.</p>
+
+    <div class="team-grid">
+
+      <!-- CEO -->
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img src="/images/CEO.jpg" alt="CEO Quick Shift Kampala" class="img-cover" loading="lazy" width="400" height="480" />
+        </div>
+        <div class="team-card__info">
+          <strong class="team-card__name">Crew Member #02</strong>
+          <span class="team-card__role">CEO &amp; Founder</span>
+          <p class="team-card__bio">The driving force behind Quick Shift Kampala. With years of hands-on experience in moving and relocation across Kampala, he built Quick Shift on the principle that every client deserves a fixed price and a professional crew.</p>
+        </div>
+      </div>
+
+      <!-- Co-founder -->
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img src="/images/Co founder.jpg" alt="Co-founder Quick Shift Kampala" class="img-cover" loading="lazy" width="400" height="480" />
+        </div>
+        <div class="team-card__info">
+          <strong class="team-card__name">Crew Member #04</strong>
+          <span class="team-card__role">Co-founder &amp; Operations</span>
+          <p class="team-card__bio">Heads operations and client coordination at Quick Shift. Ensures every move is planned, every crew is briefed and every client knows exactly what to expect from the moment they book to the moment they settle in.</p>
+        </div>
+      </div>
+
+      <!-- Team photo -->
+      <div class="team-card team-card--wide">
+        <div class="team-card__photo team-card__photo--wide">
+          <img src="/images/team.jpg" alt="Quick Shift Kampala full crew" class="img-cover" loading="lazy" width="800" height="400" />
+        </div>
+        <div class="team-card__info">
+          <strong class="team-card__name">The Quick Shift Crew</strong>
+          <span class="team-card__role">Trained moving specialists</span>
+          <p class="team-card__bio">Our crew members are trained in professional packing, furniture disassembly and reassembly, fragile item handling and safe loading. Every crew member wears a branded Quick Shift uniform so you always know who is in your home or office.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section values-section">
+    <div class="w">
+      <span class="eyebrow">What we stand for</span>
+      <h2 class="h2">Our values.</h2>
+      <div class="values-grid">
+        {values.map(v => (
+          <div class="value-card">
+            <div class="value-card__dot" aria-hidden="true"></div>
+            <strong class="value-card__title">{v.title}</strong>
+            <p class="value-card__desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BAND -->
+  <div class="about-band">
+    <img src="/images/team  back  photo.jpg" alt="Quick Shift Kampala crew — we move you quickly and safely" class="img-cover" loading="lazy" width="1600" height="480" />
+    <div class="about-band__overlay">
+      <div class="w">
+        <span class="eyebrow">Our promise</span>
+        <p class="about-band__quote">"Your belongings arrive safely. Your new space is ready. That is the promise we make on every single move."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section w">
+    <span class="eyebrow">Why Quick Shift</span>
+    <h2 class="h2">What makes us different.</h2>
+    <div class="diff-grid">
+      {[
+        { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: 'Licensed & insured', desc: 'Every move is covered by goods-in-transit insurance from the moment we start packing.' },
+        { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Fixed price guaranteed', desc: 'Free on-site survey, written quote within 24 hours. The price we quote is the price you pay.' },
+        { icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z', title: 'Weekends at no extra cost', desc: 'Weekend and after-hours moves available every week at the same fixed price — no overtime premium.' },
+        { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', title: 'Our own trained crew', desc: 'We never use subcontractors. The same uniformed team does your survey, packs and moves your belongings.' },
+        { icon: 'M5 13l4 4L19 7', title: 'Home & office specialists', desc: 'From single-room apartments to multi-floor corporate offices — one company, one standard of service.' },
+        { icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', title: '1-hour response', desc: 'WhatsApp or call us and we respond within one hour — seven days a week.' },
+      ].map(d => (
+        <div class="diff-card">
+          <div class="diff-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={d.icon}/></svg>
+          </div>
+          <strong class="diff-card__title">{d.title}</strong>
+          <p class="diff-card__desc">{d.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTABanner
+    title="Ready to move? Let's talk."
+    subtitle="WhatsApp us your move details and we will respond within one hour with a free fixed quote."
+    primaryLabel="Get a free quote"
+  />
+  <WhatsAppButton />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .about-hero__h1 {
+    font-size: clamp(32px, 4.5vw, 54px);
+    line-height: 1.08;
+    margin: 10px 0 20px;
+    color: #fff;
+  }
+  .about-hero__sub {
+    font-size: 17px;
+    color: #9fb0c8;
+    line-height: 1.65;
+    margin-bottom: 32px;
+    max-width: 500px;
+  }
+  .about-hero__photo {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 480px;
+    border: 1px solid #2c4263;
+  }
+
+  /* Story */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .stats-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border: 1px solid #2c4263;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .stats-panel__item {
+    padding: 28px 24px;
+    background: #111f35;
+    border-bottom: 1px solid #2c4263;
+  }
+  .stats-panel__item:nth-child(odd) { border-right: 1px solid #2c4263; }
+  .stats-panel__item:nth-last-child(-n+2) { border-bottom: none; }
+  .stats-panel__val { font-size: 2.5rem; font-weight: 800; color: #FF7A1A; line-height: 1; }
+  .stats-panel__label { font-size: 13px; font-weight: 600; color: #9fb0c8; margin-top: 6px; }
+
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .team-card {
+    background: #111f35;
+    border: 1px solid #2c4263;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-card--wide { grid-column: span 2; flex-direction: row; }
+  .team-card__photo { height: 320px; flex-shrink: 0; }
+  .team-card--wide .team-card__photo { width: 400px; height: auto; }
+  .team-card__info { padding: 24px; }
+  .team-card__name { font-size: 18px; font-weight: 800; color: #fff; display: block; margin-bottom: 4px; }
+  .team-card__role { font-size: 13px; font-weight: 700; color: #FF7A1A; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 14px; }
+  .team-card__bio  { font-size: 14px; color: #9fb0c8; line-height: 1.65; margin: 0; }
+
+  /* Values */
+  .values-section { background: #0f1d30; border-top: 1px solid #2c4263; border-bottom: 1px solid #2c4263; }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .value-card { background: #111f35; border: 1px solid #2c4263; border-radius: 16px; padding: 24px; }
+  .value-card__dot { width: 12px; height: 12px; background: #FF7A1A; border-radius: 50%; margin-bottom: 16px; }
+  .value-card__title { font-size: 17px; font-weight: 800; color: #fff; display: block; margin-bottom: 10px; }
+  .value-card__desc  { font-size: 14px; color: #9fb0c8; line-height: 1.6; margin: 0; }
+
+  /* Photo band */
+  .about-band { position: relative; height: 360px; overflow: hidden; }
+  .about-band__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(11,22,38,0.55), rgba(11,22,38,0.82));
+    display: flex; align-items: flex-end; padding-bottom: 48px;
+  }
+  .about-band__quote {
+    font-size: clamp(18px,2.5vw,26px);
+    font-weight: 800; color: #fff;
+    line-height: 1.3; max-width: 680px;
+    margin-top: 8px; font-style: italic;
+  }
+
+  /* Why different */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .diff-card { background: #111f35; border: 1px solid #2c4263; border-radius: 14px; padding: 22px; }
+  .diff-card__icon { width: 44px; height: 44px; background: rgba(255,122,26,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .diff-card__title { font-size: 16px; font-weight: 800; color: #fff; display: block; margin-bottom: 8px; }
+  .diff-card__desc  { font-size: 13px; color: #9fb0c8; line-height: 1.6; margin: 0; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; gap: 36px; }
+    .about-hero__photo { height: 300px; }
+    .story-grid { grid-template-columns: 1fr; gap: 36px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card--wide { grid-column: span 1; flex-direction: column; }
+    .team-card--wide .team-card__photo { width: 100%; height: 280px; }
+  }
+  @media (max-width: 640px) {
+    .about-hero { padding-top: 40px; padding-bottom: 40px; }
+    .about-hero__photo { height: 240px; }
+    .stats-panel { grid-template-columns: 1fr 1fr; }
+    .team-card__photo { height: 260px; }
+    .about-band { height: 280px; }
+    .about-band__overlay { padding-bottom: 28px; }
+  }
+</style>
